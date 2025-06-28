@@ -2,9 +2,9 @@
 import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
 import PhotoGallery from '@/components/PhotoGallery';
+import OrganizationStructure from '@/components/OrganizationStructure';
 import LocationMap from '@/components/LocationMap';
 import PartnershipSection from '@/components/PartnershipSection';
-import OrganizationStructure from '@/components/OrganizationStructure';
 import Footer from '@/components/Footer';
 import ScrollAnimations from '@/components/ScrollAnimations';
 
@@ -15,9 +15,9 @@ const Index = () => {
       <Header />
       <HeroSection />
       <PhotoGallery />
+      <OrganizationStructure />
       <LocationMap />
       <PartnershipSection />
-      <OrganizationStructure />
       <Footer />
     </div>
   );
