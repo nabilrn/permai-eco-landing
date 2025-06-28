@@ -44,7 +44,7 @@ const OrganizationStructure = () => {
   return (
     <section id="organization" className="py-20 bg-gray-50">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16 animate-fade-in-up">
+        <div className="text-center mb-16 animate-on-scroll">
           <div className="flex items-center justify-center gap-2 mb-4">
             <Users className="w-6 h-6 text-green-600" />
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800">Struktur Kepengurusan</h2>
@@ -58,10 +58,11 @@ const OrganizationStructure = () => {
           {structure.map((member, index) => (
             <div
               key={member.position}
-              className={`bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 animate-stagger-${(index % 4) + 1}`}
+              className={`bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105 animate-on-scroll`}
+              style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mr-4">
+                <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mr-4 transform hover:rotate-12 transition-transform duration-200">
                   <member.icon className="w-6 h-6 text-green-600" />
                 </div>
                 <div>

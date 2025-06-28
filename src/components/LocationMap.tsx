@@ -5,7 +5,7 @@ const LocationMap = () => {
   return (
     <section id="location" className="py-20 bg-gray-50">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16 animate-fade-in-up">
+        <div className="text-center mb-16 animate-on-scroll">
           <div className="flex items-center justify-center gap-2 mb-4">
             <MapPin className="w-6 h-6 text-green-600" />
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800">Lokasi Kami</h2>
@@ -16,12 +16,12 @@ const LocationMap = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-start">
-          <div className="animate-slide-in-left">
-            <div className="bg-white rounded-2xl shadow-lg p-8">
+          <div className="animate-on-scroll">
+            <div className="bg-white rounded-2xl shadow-lg p-8 transform hover:shadow-xl transition-all duration-300">
               <h3 className="text-2xl font-bold text-gray-800 mb-6">Informasi Kontak</h3>
               
               <div className="space-y-6">
-                <div className="flex items-start gap-4">
+                <div className="flex items-start gap-4 transform hover:translate-x-2 transition-transform duration-200">
                   <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
                     <MapPin className="w-6 h-6 text-green-600" />
                   </div>
@@ -35,7 +35,7 @@ const LocationMap = () => {
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
+                <div className="flex items-start gap-4 transform hover:translate-x-2 transition-transform duration-200">
                   <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
                     <Phone className="w-6 h-6 text-green-600" />
                   </div>
@@ -45,7 +45,7 @@ const LocationMap = () => {
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
+                <div className="flex items-start gap-4 transform hover:translate-x-2 transition-transform duration-200">
                   <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
                     <Mail className="w-6 h-6 text-green-600" />
                   </div>
@@ -55,7 +55,7 @@ const LocationMap = () => {
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
+                <div className="flex items-start gap-4 transform hover:translate-x-2 transition-transform duration-200">
                   <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
                     <Clock className="w-6 h-6 text-green-600" />
                   </div>
@@ -72,8 +72,8 @@ const LocationMap = () => {
             </div>
           </div>
 
-          <div className="animate-fade-in-up">
-            <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+          <div className="animate-on-scroll">
+            <div className="bg-white rounded-2xl shadow-lg overflow-hidden transform hover:shadow-xl transition-all duration-300">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d106.8195613507864!3d-6.194637395493371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5390917b759%3A0x6b45e67356080477!2sHotel%20Indonesia%20Kempinski%20Jakarta!5e0!3m2!1sen!2sid!4v1635724087890!5m2!1sen!2sid"
                 width="100%"

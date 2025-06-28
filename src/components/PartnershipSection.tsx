@@ -32,7 +32,7 @@ const PartnershipSection = () => {
   return (
     <section id="partnership" className="py-20 bg-white">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16 animate-fade-in-up">
+        <div className="text-center mb-16 animate-on-scroll">
           <div className="flex items-center justify-center gap-2 mb-4">
             <Handshake className="w-6 h-6 text-green-600" />
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800">Mitra Kerja Sama</h2>
@@ -46,9 +46,10 @@ const PartnershipSection = () => {
           {partners.map((partner, index) => (
             <div
               key={partner.name}
-              className={`bg-gray-50 rounded-2xl p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 animate-stagger-${index + 1}`}
+              className={`bg-gray-50 rounded-2xl p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 transform hover:scale-105 animate-on-scroll`}
+              style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="w-16 h-16 bg-green-100 rounded-xl flex items-center justify-center mb-4">
+              <div className="w-16 h-16 bg-green-100 rounded-xl flex items-center justify-center mb-4 transform hover:rotate-6 transition-transform duration-200">
                 <partner.icon className="w-8 h-8 text-green-600" />
               </div>
               <h3 className="text-lg font-semibold text-gray-800 mb-2">{partner.name}</h3>

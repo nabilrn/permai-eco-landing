@@ -36,7 +36,7 @@ const PhotoGallery = () => {
   return (
     <section id="gallery" className="py-20 bg-white">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16 animate-fade-in-up">
+        <div className="text-center mb-16 animate-on-scroll">
           <div className="flex items-center justify-center gap-2 mb-4">
             <Camera className="w-6 h-6 text-green-600" />
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800">Galeri Kegiatan</h2>
@@ -46,12 +46,12 @@ const PhotoGallery = () => {
           </p>
         </div>
 
-        <div className="relative max-w-4xl mx-auto">
+        <div className="relative max-w-4xl mx-auto animate-on-scroll">
           <div className="relative overflow-hidden rounded-2xl shadow-2xl">
             <img 
               src={images[currentImage].url}
               alt={images[currentImage].caption}
-              className="w-full h-[500px] object-cover transition-all duration-500"
+              className="w-full h-[500px] object-cover transition-all duration-500 transform hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
             <div className="absolute bottom-6 left-6 right-6">
@@ -63,7 +63,7 @@ const PhotoGallery = () => {
             onClick={prevImage}
             variant="outline"
             size="icon"
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white border-white/20"
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white border-white/20 hover:scale-110 transition-all duration-200"
           >
             <ChevronLeft className="w-5 h-5" />
           </Button>
@@ -72,7 +72,7 @@ const PhotoGallery = () => {
             onClick={nextImage}
             variant="outline"
             size="icon"
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white border-white/20"
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white border-white/20 hover:scale-110 transition-all duration-200"
           >
             <ChevronRight className="w-5 h-5" />
           </Button>
@@ -82,8 +82,8 @@ const PhotoGallery = () => {
               <button
                 key={index}
                 onClick={() => setCurrentImage(index)}
-                className={`w-3 h-3 rounded-full transition-all ${
-                  currentImage === index ? 'bg-green-600' : 'bg-gray-300 hover:bg-gray-400'
+                className={`w-3 h-3 rounded-full transition-all duration-300 transform hover:scale-125 ${
+                  currentImage === index ? 'bg-green-600 scale-110' : 'bg-gray-300 hover:bg-gray-400'
                 }`}
               />
             ))}
