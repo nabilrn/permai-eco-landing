@@ -1,44 +1,52 @@
-
-import { Users, User, Shield, BookOpen, Wrench } from 'lucide-react';
+import {
+  Users,
+  User,
+  Shield,
+  BookOpen,
+  Wrench,
+  FileText,
+  Recycle,
+  Palette,
+} from "lucide-react";
 
 const OrganizationStructure = () => {
   const structure = [
     {
-      position: "Ketua",
-      name: "Ibu Sari Wulandari",
+      position: "Direktur",
+      name: "Athila Laboer",
       icon: Shield,
-      description: "Memimpin keseluruhan operasional bank sampah"
+      description: "Memimpin keseluruhan operasional bank sampah",
     },
     {
-      position: "Wakil Ketua",
-      name: "Bapak Ahmad Hidayat",
+      position: "Wakil Direktur",
+      name: "Juraimah",
       icon: User,
-      description: "Membantu ketua dalam menjalankan program"
+      description: "Membantu direktur dalam menjalankan program",
     },
     {
       position: "Sekretaris",
-      name: "Ibu Maya Sari",
-      icon: BookOpen,
-      description: "Mengelola administrasi dan dokumentasi"
+      name: "Sauqiyati Azkia Darman, Salaabilla Fransisca Oktomadina",
+      icon: FileText,
+      description: "Mengelola administrasi dan dokumentasi",
     },
     {
       position: "Bendahara",
-      name: "Ibu Rina Marlina",
+      name: "Eva Martha",
       icon: BookOpen,
-      description: "Mengelola keuangan dan pembukuan"
+      description: "Mengelola keuangan dan pembukuan",
     },
     {
-      position: "Koordinator Lapangan",
-      name: "Bapak Joko Santoso",
-      icon: Wrench,
-      description: "Mengkoordinasi kegiatan operasional"
+      position: "Bidang Penerimaan, Pemilahan dan Pencatatan",
+      name: "Ismawati Ismail, Guslaini",
+      icon: Recycle,
+      description: "Mengelola penerimaan, pemilahan dan pencatatan sampah",
     },
     {
-      position: "Humas",
-      name: "Ibu Lisa Permata",
-      icon: Users,
-      description: "Menjalin hubungan dengan masyarakat"
-    }
+      position: "Bidang Pengembangan dan Kerajinan Usaha",
+      name: "Roslina Tobing, Yuniasri, Ripos Maradona",
+      icon: Palette,
+      description: "Mengembangkan usaha kerajinan dari bahan daur ulang",
+    },
   ];
 
   return (
@@ -47,10 +55,13 @@ const OrganizationStructure = () => {
         <div className="text-center mb-16 animate-on-scroll">
           <div className="flex items-center justify-center gap-2 mb-4">
             <Users className="w-6 h-6 text-green-600" />
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800">Struktur Kepengurusan</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
+              Struktur Kepengurusan
+            </h2>
           </div>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Tim berpengalaman yang berkomitmen untuk memajukan Bank Sampah Pondok Permai
+            Tim berpengalaman yang berkomitmen untuk memajukan Bank Sampah
+            Pondok Permai
           </p>
         </div>
 
@@ -66,7 +77,9 @@ const OrganizationStructure = () => {
                   <member.icon className="w-6 h-6 text-green-600" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-800">{member.position}</h3>
+                  <h3 className="text-lg font-semibold text-gray-800">
+                    {member.position}
+                  </h3>
                   <p className="text-green-600 font-medium">{member.name}</p>
                 </div>
               </div>
