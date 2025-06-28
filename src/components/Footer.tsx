@@ -1,5 +1,4 @@
-
-import { Recycle, Mail, Phone, MapPin, Heart } from 'lucide-react';
+import { Recycle, Mail, Phone, MapPin, Heart, Facebook, Instagram } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -19,6 +18,37 @@ const Footer = () => {
             <p className="text-gray-300 mb-6">
               Bersama wujudkan lingkungan bersih dan berkelanjutan untuk generasi mendatang.
             </p>
+            
+            {/* Social Media Links */}
+            <div className="space-y-4">
+              <h4 className="text-lg font-semibold">Ikuti Kami</h4>
+              <div className="flex gap-4">
+                <a 
+                  href="https://www.facebook.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors"
+                >
+                  <Facebook className="w-5 h-5 text-white" />
+                </a>
+                <a 
+                  href="https://www.instagram.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center hover:from-purple-600 hover:to-pink-600 transition-all"
+                >
+                  <Instagram className="w-5 h-5 text-white" />
+                </a>
+                <a 
+                  href="https://wa.me/6212345678" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center hover:bg-green-600 transition-colors"
+                >
+                  <Phone className="w-5 h-5 text-white" />
+                </a>
+              </div>
+            </div>
           </div>
 
           <div>
