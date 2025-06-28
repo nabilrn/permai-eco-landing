@@ -1,0 +1,49 @@
+
+import { Button } from '@/components/ui/button';
+import { ArrowDown } from 'lucide-react';
+
+const HeroSection = () => {
+  return (
+    <section id="home" className="min-h-screen bg-gradient-to-br from-green-50 to-white flex items-center">
+      <div className="container mx-auto px-4 py-20">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="animate-fade-in-up">
+            <h1 className="text-4xl md:text-6xl font-bold text-gray-800 mb-6">
+              Bank Sampah
+              <span className="block text-green-600">Pondok Permai</span>
+            </h1>
+            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+              Bersama Wujudkan Lingkungan Bersih dan Berkelanjutan
+            </p>
+            <p className="text-gray-500 mb-8">
+              Bergabunglah dengan komunitas peduli lingkungan untuk menciptakan masa depan yang lebih hijau dan sustainable melalui pengelolaan sampah yang bertanggung jawab.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button size="lg" className="bg-green-600 hover:bg-green-700">
+                Bergabung Sekarang
+              </Button>
+              <Button variant="outline" size="lg" className="border-green-600 text-green-600 hover:bg-green-50">
+                Pelajari Lebih Lanjut
+              </Button>
+            </div>
+          </div>
+          <div className="animate-slide-in-left">
+            <div className="relative">
+              <img 
+                src="https://images.unsplash.com/photo-1615729947596-a598e5de0ab3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                alt="Lingkungan Hijau Bank Sampah" 
+                className="rounded-2xl shadow-2xl w-full h-[500px] object-cover"
+              />
+              <div className="absolute inset-0 bg-green-600/10 rounded-2xl"></div>
+            </div>
+          </div>
+        </div>
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <ArrowDown className="w-6 h-6 text-green-600" />
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default HeroSection;
