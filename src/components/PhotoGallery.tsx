@@ -1,37 +1,33 @@
 
-import { useState } from 'react';
-import { ChevronLeft, ChevronRight, Camera } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Camera } from 'lucide-react';
 
 const PhotoGallery = () => {
-  const [currentImage, setCurrentImage] = useState(0);
-  
   const images = [
     {
-      url: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      caption: "Kegiatan pemilahan sampah bersama masyarakat"
+      url: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     },
     {
-      url: "https://images.unsplash.com/photo-1472396961693-142e6e269027?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      caption: "Workshop edukasi lingkungan untuk anak-anak"
+      url: "https://images.unsplash.com/photo-1472396961693-142e6e269027?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     },
     {
-      url: "https://images.unsplash.com/photo-1487252665478-49b61b47f302?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      caption: "Program penanaman pohon di area komunitas"
+      url: "https://images.unsplash.com/photo-1487252665478-49b61b47f302?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     },
     {
-      url: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      caption: "Hasil daur ulang sampah menjadi kerajinan"
+      url: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1523712999610-f77fbcfc3843?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     }
   ];
-
-  const nextImage = () => {
-    setCurrentImage((prev) => (prev + 1) % images.length);
-  };
-
-  const prevImage = () => {
-    setCurrentImage((prev) => (prev - 1 + images.length) % images.length);
-  };
 
   return (
     <section id="gallery" className="py-20 bg-white">
@@ -46,46 +42,22 @@ const PhotoGallery = () => {
           </p>
         </div>
 
-        <div className="relative max-w-4xl mx-auto animate-on-scroll">
-          <div className="relative overflow-hidden rounded-2xl shadow-2xl">
-            <img 
-              src={images[currentImage].url}
-              alt={images[currentImage].caption}
-              className="w-full h-[500px] object-cover transition-all duration-500 transform hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-            <div className="absolute bottom-6 left-6 right-6">
-              <p className="text-white text-lg font-medium">{images[currentImage].caption}</p>
-            </div>
-          </div>
-
-          <Button
-            onClick={prevImage}
-            variant="outline"
-            size="icon"
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white border-white/20 hover:scale-110 transition-all duration-200"
-          >
-            <ChevronLeft className="w-5 h-5" />
-          </Button>
-
-          <Button
-            onClick={nextImage}
-            variant="outline"
-            size="icon"
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white border-white/20 hover:scale-110 transition-all duration-200"
-          >
-            <ChevronRight className="w-5 h-5" />
-          </Button>
-
-          <div className="flex justify-center mt-6 gap-2">
-            {images.map((_, index) => (
-              <button
+        <div className="max-w-6xl mx-auto animate-on-scroll">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            {images.map((image, index) => (
+              <div 
                 key={index}
-                onClick={() => setCurrentImage(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 transform hover:scale-125 ${
-                  currentImage === index ? 'bg-green-600 scale-110' : 'bg-gray-300 hover:bg-gray-400'
-                }`}
-              />
+                className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+              >
+                <div className="aspect-square">
+                  <img 
+                    src={image.url}
+                    alt={`Kegiatan Bank Sampah ${index + 1}`}
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                  />
+                </div>
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
+              </div>
             ))}
           </div>
         </div>
