@@ -1,0 +1,42 @@
+runtime: nodejs20
+service: default
+
+env_variables:
+  NODE_ENV: production
+
+handlers:
+  - url: /assets/(.*)
+    static_files: dist/assets/\1
+    upload: dist/assets/(.*)
+    secure: always
+    http_headers:
+      Cache-Control: public, max-age=31536000
+
+  - url: /images/(.*)
+    static_files: dist/images/\1
+    upload: dist/images/(.*)
+    secure: always
+    http_headers:
+      Cache-Control: public, max-age=86400
+
+  - url: /favicon.ico
+    static_files: dist/favicon.ico
+    upload: dist/favicon.ico
+    secure: always
+
+  - url: /robots.txt
+    static_files: dist/robots.txt
+    upload: dist/robots.txt
+    secure: always
+
+  - url: /.*
+    static_files: dist/index.html
+    upload: dist/index.html
+    secure: always
+    http_headers:
+      Cache-Control: no-cache
+
+automatic_scaling:
+  min_instances: 0
+  max_instances: 10
+  target_cpu_utilization: 0.6

@@ -3,28 +3,28 @@ import { Camera } from "lucide-react";
 const PhotoGallery = () => {
   const images = [
     {
-      url: "public/images/griyaluhu.png",
+      url: "/images/griyaluhu.png",
     },
     {
-      url: "public/images/kkn.png",
+      url: "/images/kkn.png",
     },
     {
-      url: "public/images/goro.png",
+      url: "/images/goro.png",
     },
     {
-      url: "public/images/pemilahan.png",
+      url: "/images/pemilahan.png",
     },
     {
-      url: "public/images/penimbangan.png",
+      url: "/images/penimbangan.png",
     },
     {
-      url: "public/images/penjualan.png",
+      url: "/images/penjualan.png",
     },
     {
-      url: "public/images/walikota.png",
+      url: "/images/walikota.png",
     },
     {
-      url: "public/images/map.png",
+      url: "/images/map.png",
     },
   ];
 

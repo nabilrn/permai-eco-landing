@@ -20,7 +20,7 @@ const FloatingElements = () => {
       <Recycle className="w-full h-full" />,
       <Heart className="w-full h-full" />,
     ];
-    
+
     const colors = ["text-green-400", "text-green-500", "text-green-600"];
 
     const generateElements = () => {

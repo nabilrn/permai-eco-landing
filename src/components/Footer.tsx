@@ -8,8 +8,8 @@ const Footer = () => {
           <div>
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center p-1">
-                <img 
-                  src="/images/logopondokpermai.png" 
+                <img
+                  src="/images/logopondokpermai.png"
                   alt="Bank Sampah Pondok Permai Logo"
                   className="w-full h-full object-contain rounded-lg"
                 />

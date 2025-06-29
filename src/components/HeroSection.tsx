@@ -16,11 +16,12 @@ const HeroSection = () => {
     if (nextSection) {
       const headerHeight = 100; // Height of floating header + padding
       const elementPosition = nextSection.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+      const offsetPosition =
+        elementPosition + window.pageYOffset - headerHeight;
 
       window.scrollTo({
         top: offsetPosition,
-        behavior: 'smooth'
+        behavior: "smooth",
       });
     }
   };
@@ -110,7 +111,7 @@ const HeroSection = () => {
               <div className="absolute -inset-1 bg-gradient-to-r from-green-600 to-emerald-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200 animate-pulse-green"></div>
               <div className="relative">
                 <img
-                  src="public/images/banksampahpp.png"
+                  src="/images/banksampahpp.png"
                   alt="Lingkungan Hijau Bank Sampah"
                   className="rounded-2xl shadow-2xl w-full h-[500px] object-cover parallax-scroll hover:scale-105 transition-transform duration-500"
                 />

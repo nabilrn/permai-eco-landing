@@ -1,5 +1,5 @@
-import { Menu, X } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { Menu, X } from "lucide-react";
+import { useState, useEffect } from "react";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -9,26 +9,27 @@ const Header = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-    
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const handleNavClick = (href: string) => {
     const targetId = href.substring(1); // Remove the '#'
     const targetElement = document.getElementById(targetId);
-    
+
     if (targetElement) {
       const headerHeight = 100; // Height of floating header + padding
       const elementPosition = targetElement.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+      const offsetPosition =
+        elementPosition + window.pageYOffset - headerHeight;
 
       window.scrollTo({
         top: offsetPosition,
-        behavior: 'smooth'
+        behavior: "smooth",
       });
     }
-    
+
     // Close mobile menu if open
     setIsMobileMenuOpen(false);
   };
@@ -39,7 +40,7 @@ const Header = () => {
     { href: "#blog", label: "Tentang Kami" },
     { href: "#location", label: "Lokasi" },
     { href: "#partnership", label: "Mitra" },
-    { href: "#organization", label: "Kepengurusan" }
+    { href: "#organization", label: "Kepengurusan" },
   ];
 
   return (
@@ -47,27 +48,34 @@ const Header = () => {
       <header className="fixed top-0 left-0 right-0 z-50 px-4 py-4">
         {/* Background with same gradient as hero section */}
         <div className="absolute inset-0 bg-gradient-to-br from-green-50/60 via-emerald-50/60 to-white/60 backdrop-blur-xl rounded-2xl mx-4 my-2"></div>
-        
+
         {/* Floating particles effect similar to hero */}
         <div className="absolute inset-0 overflow-hidden rounded-2xl mx-4 my-2">
           <div className="absolute top-2 left-8 w-16 h-16 bg-green-300 rounded-full mix-blend-multiply filter blur-lg opacity-20 animate-float"></div>
-          <div className="absolute top-4 right-12 w-12 h-12 bg-emerald-300 rounded-full mix-blend-multiply filter blur-lg opacity-20 animate-float" style={{ animationDelay: '1s' }}></div>
-          <div className="absolute bottom-2 left-16 w-14 h-14 bg-lime-300 rounded-full mix-blend-multiply filter blur-lg opacity-20 animate-float" style={{ animationDelay: '2s' }}></div>
+          <div
+            className="absolute top-4 right-12 w-12 h-12 bg-emerald-300 rounded-full mix-blend-multiply filter blur-lg opacity-20 animate-float"
+            style={{ animationDelay: "1s" }}
+          ></div>
+          <div
+            className="absolute bottom-2 left-16 w-14 h-14 bg-lime-300 rounded-full mix-blend-multiply filter blur-lg opacity-20 animate-float"
+            style={{ animationDelay: "2s" }}
+          ></div>
         </div>
-        
+
         <div
           className={`container mx-auto relative z-10 transition-all duration-300 ${
-            isScrolled 
-              ? 'bg-white/95 backdrop-blur-md shadow-lg border border-white/20' 
-              : 'bg-white/10 backdrop-blur-md shadow-md border border-white/10'
-          } rounded-2xl`}>
+            isScrolled
+              ? "bg-white/95 backdrop-blur-md shadow-lg border border-white/20"
+              : "bg-white/10 backdrop-blur-md shadow-md border border-white/10"
+          } rounded-2xl`}
+        >
           <div className="px-6 py-4">
             <div className="flex items-center justify-between">
               {/* Logo Section */}
               <div className="flex items-center gap-3 group">
                 <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-all duration-300 p-1">
-                  <img 
-                    src="/images/logopondokpermai.png" 
+                  <img
+                    src="/images/logopondokpermai.png"
                     alt="Bank Sampah Pondok Permai Logo"
                     className="w-full h-full object-contain rounded-xl"
                   />
@@ -76,7 +84,9 @@ const Header = () => {
                   <h1 className="text-xl font-bold text-gray-800 group-hover:text-green-600 transition-colors">
                     Bank Sampah
                   </h1>
-                  <p className="text-sm text-green-600 font-medium">Pondok Permai</p>
+                  <p className="text-sm text-green-600 font-medium">
+                    Pondok Permai
+                  </p>
                 </div>
               </div>
 
@@ -113,7 +123,7 @@ const Header = () => {
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-40 md:hidden">
-          <div 
+          <div
             className="absolute inset-0 bg-black/50 backdrop-blur-sm"
             onClick={() => setIsMobileMenuOpen(false)}
           ></div>

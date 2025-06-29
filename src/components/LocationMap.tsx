@@ -1,5 +1,4 @@
-
-import { MapPin, Phone, Mail, Clock } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock } from "lucide-react";
 
 const LocationMap = () => {
   return (
@@ -8,18 +7,23 @@ const LocationMap = () => {
         <div className="text-center mb-16 animate-on-scroll">
           <div className="flex items-center justify-center gap-2 mb-4">
             <MapPin className="w-6 h-6 text-green-600" />
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800">Lokasi Kami</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
+              Lokasi Kami
+            </h2>
           </div>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Kunjungi Bank Sampah Pondok Permai dan bergabung dengan komunitas peduli lingkungan
+            Kunjungi Bank Sampah Pondok Permai dan bergabung dengan komunitas
+            peduli lingkungan
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           <div className="animate-on-scroll">
             <div className="bg-white rounded-2xl shadow-lg p-8 transform hover:shadow-xl transition-all duration-300">
-              <h3 className="text-2xl font-bold text-gray-800 mb-6">Informasi Kontak</h3>
-              
+              <h3 className="text-2xl font-bold text-gray-800 mb-6">
+                Informasi Kontak
+              </h3>
+
               <div className="space-y-6">
                 <div className="flex items-start gap-4 transform hover:translate-x-2 transition-transform duration-200">
                   <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -28,8 +32,10 @@ const LocationMap = () => {
                   <div>
                     <h4 className="font-semibold text-gray-800 mb-1">Alamat</h4>
                     <p className="text-gray-600">
-                      RT.01/RW.03, Limau Manis Sel.<br />
-                      Kec. Pauh, Kota Padang<br />
+                      RT.01/RW.03, Limau Manis Sel.
+                      <br />
+                      Kec. Pauh, Kota Padang
+                      <br />
                       Sumatera Barat
                     </p>
                   </div>
@@ -40,7 +46,9 @@ const LocationMap = () => {
                     <Phone className="w-6 h-6 text-green-600" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-800 mb-1">Telepon</h4>
+                    <h4 className="font-semibold text-gray-800 mb-1">
+                      Telepon
+                    </h4>
                     <p className="text-gray-600">+62 812-6707-8480</p>
                   </div>
                 </div>
@@ -60,9 +68,12 @@ const LocationMap = () => {
                     <Clock className="w-6 h-6 text-green-600" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-800 mb-1">Jam Operasional</h4>
+                    <h4 className="font-semibold text-gray-800 mb-1">
+                      Jam Operasional
+                    </h4>
                     <p className="text-gray-600">
-                      Setiap Sabtu<br />
+                      Setiap Sabtu
+                      <br />
                       Jam 07:00 - 10:00 WIB
                     </p>
                   </div>
