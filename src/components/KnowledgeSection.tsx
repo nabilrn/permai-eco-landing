@@ -8,25 +8,25 @@ const KnowledgeSection = () => {
       id: 1,
       title: "Pemilahan Sampah Organik",
       description: "Sampah organik adalah sampah yang berasal dari makhluk hidup seperti sisa makanan, daun, dan ranting. Sampah ini mudah terurai secara alami dan dapat dijadikan kompos untuk menyuburkan tanah. Pemilahan sampah organik sangat penting untuk mengurangi volume sampah yang berakhir di tempat pembuangan akhir.",
-      image: "/images/pemilahan.png"
+      image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=500&h=400&fit=crop&crop=center"
     },
     {
       id: 2,
       title: "Sampah Anorganik dan Daur Ulang",
       description: "Sampah anorganik seperti plastik, kertas, logam, dan kaca dapat didaur ulang menjadi produk baru. Proses daur ulang membantu menghemat sumber daya alam dan mengurangi pencemaran lingkungan. Setiap jenis sampah anorganik memiliki cara pengolahan yang berbeda untuk menghasilkan produk berkualitas.",
-      image: "/images/penimbangan.png"
+      image: "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=500&h=400&fit=crop&crop=center"
     },
     {
       id: 3,
       title: "Manfaat Bank Sampah",
       description: "Bank sampah memberikan nilai ekonomis pada sampah yang biasanya dibuang begitu saja. Melalui sistem tabungan, masyarakat dapat menukarkan sampah dengan uang atau barang kebutuhan sehari-hari. Ini mendorong partisipasi aktif masyarakat dalam pengelolaan sampah dan menciptakan ekonomi sirkular.",
-      image: "/images/penjualan.png"
+      image: "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=500&h=400&fit=crop&crop=center"
     },
     {
       id: 4,
       title: "Teknik Penimbangan Sampah",
       description: "Penimbangan sampah dilakukan dengan cermat untuk menentukan nilai tukar yang tepat. Setiap jenis sampah memiliki harga yang berbeda tergantung pada kualitas dan permintaan pasar. Proses ini memerlukan ketelitian dan kejujuran untuk menjaga kepercayaan nasabah bank sampah.",
-      image: "/images/goro.png"
+      image: "https://images.unsplash.com/photo-1586075010923-2dd4570fb338?w=500&h=400&fit=crop&crop=center"
     }
   ];
 
