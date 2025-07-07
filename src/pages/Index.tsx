@@ -1,7 +1,9 @@
+
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import PhotoGallery from "@/components/PhotoGallery";
 import OrganizationStructure from "@/components/OrganizationStructure";
+import KnowledgeSection from "@/components/KnowledgeSection";
 import BlogSection from "@/components/BlogSection";
 import LocationMap from "@/components/LocationMap";
 import PartnershipSection from "@/components/PartnershipSection";
@@ -16,6 +18,7 @@ const Index = () => {
       <HeroSection />
       <PhotoGallery />
       <OrganizationStructure />
+      <KnowledgeSection />
       <BlogSection />
       <LocationMap />
       <PartnershipSection />
