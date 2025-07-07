@@ -1,6 +1,6 @@
-
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
+import VisitorCounter from "@/components/VisitorCounter";
 import PhotoGallery from "@/components/PhotoGallery";
 import OrganizationStructure from "@/components/OrganizationStructure";
 import KnowledgeSection from "@/components/KnowledgeSection";
@@ -16,6 +16,7 @@ const Index = () => {
       <ScrollAnimations />
       <Header />
       <HeroSection />
+      <VisitorCounter />
       <PhotoGallery />
       <OrganizationStructure />
       <KnowledgeSection />

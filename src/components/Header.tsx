@@ -45,6 +45,59 @@ const Header = () => {
 
   return (
     <>
+      {/* CSS Animations for rotating light dot */}
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+          @keyframes rotate-light {
+            0% {
+              transform: translateX(0) translateY(0) rotate(0deg);
+              opacity: 1;
+            }
+            25% {
+              transform: translateX(100%) translateY(0) rotate(90deg);
+              opacity: 0.8;
+            }
+            50% {
+              transform: translateX(100%) translateY(100%) rotate(180deg);
+              opacity: 1;
+            }
+            75% {
+              transform: translateX(0) translateY(100%) rotate(270deg);
+              opacity: 0.8;
+            }
+            100% {
+              transform: translateX(0) translateY(0) rotate(360deg);
+              opacity: 1;
+            }
+          }
+          
+          .rotating-light-container {
+            position: absolute;
+            inset: -6px;
+            border-radius: inherit;
+            overflow: hidden;
+            pointer-events: none;
+          }
+          
+          .rotating-light {
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, rgba(34, 197, 94, 1) 0%, rgba(34, 197, 94, 0.8) 30%, rgba(34, 197, 94, 0.4) 60%, transparent 100%);
+            border-radius: 50%;
+            box-shadow: 
+              0 0 8px rgba(34, 197, 94, 0.8),
+              0 0 16px rgba(34, 197, 94, 0.6),
+              0 0 24px rgba(34, 197, 94, 0.4);
+            animation: rotate-light 3s linear infinite;
+          }
+        `,
+        }}
+      />
+
       <header className="fixed top-0 left-0 right-0 z-50 px-4 py-4">
         {/* Background with same gradient as hero section */}
         <div className="absolute inset-0 bg-gradient-to-br from-green-50/60 via-emerald-50/60 to-white/60 backdrop-blur-xl rounded-2xl mx-4 my-2"></div>
@@ -69,6 +122,10 @@ const Header = () => {
               : "bg-white/10 backdrop-blur-md shadow-md border border-white/10"
           } rounded-2xl`}
         >
+          {/* Rotating Light Effect */}
+          <div className="rotating-light-container">
+            <div className="rotating-light"></div>
+          </div>
           <div className="px-6 py-4">
             <div className="flex items-center justify-between">
               {/* Logo Section */}

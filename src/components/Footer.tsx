@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin, Heart, Instagram } from "lucide-react";
+import { Mail, Phone, MapPin, Heart } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -32,17 +32,25 @@ const Footer = () => {
                   href="https://www.instagram.com/bpondokpermai"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center hover:from-purple-600 hover:to-pink-600 transition-all"
+                  className="hover:opacity-80 transition-opacity"
                 >
-                  <Instagram className="w-5 h-5 text-white" />
+                  <img
+                    src="/images/icon/instagram.png"
+                    alt="Instagram"
+                    className="w-10 h-10"
+                  />
                 </a>
                 <a
                   href="https://wa.me/6281267078480"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center hover:bg-green-600 transition-colors"
+                  className="w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
                 >
-                  <Phone className="w-5 h-5 text-white" />
+                  <img
+                    src="/images/icon/whatsapp.png"
+                    alt="WhatsApp"
+                    className="w-6 h-6"
+                  />
                 </a>
               </div>
             </div>
