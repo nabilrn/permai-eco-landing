@@ -8,7 +8,12 @@
     "build": "vite build",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "seo:submit": "node scripts/submit-sitemap.js",
+    "seo:check": "node scripts/seo-check.js",
+    "seo:simulate": "node scripts/search-simulation.js",
+    "seo:indexing": "node scripts/check-indexing.js",
+    "build:seo": "npm run build && npm run seo:submit"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",

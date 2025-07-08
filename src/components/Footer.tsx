@@ -1,4 +1,5 @@
 import { Mail, Phone, MapPin, Heart } from "lucide-react";
+import PriorityImage from "@/components/ui/PriorityImage";
 
 const Footer = () => {
   return (
@@ -8,10 +9,12 @@ const Footer = () => {
           <div>
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center p-1">
-                <img
+                <PriorityImage
                   src="/images/logopondokpermai.png"
+                  webpSrc="/images/logopondokpermai.webp"
                   alt="Bank Sampah Pondok Permai Logo"
                   className="w-full h-full object-contain rounded-lg"
+                  priority={true}
                 />
               </div>
               <div>
@@ -29,13 +32,14 @@ const Footer = () => {
               <h4 className="text-lg font-semibold">Ikuti Kami</h4>
               <div className="flex gap-4">
                 <a
-                  href="https://www.instagram.com/bpondokpermai"
+                  href="https://www.instagram.com/bank_sampahpp"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:opacity-80 transition-opacity"
                 >
-                  <img
+                  <PriorityImage
                     src="/images/icon/instagram.png"
+                    webpSrc="/images/icon/instagram.webp"
                     alt="Instagram"
                     className="w-10 h-10"
                   />
@@ -46,8 +50,9 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   className="w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
                 >
-                  <img
+                  <PriorityImage
                     src="/images/icon/whatsapp.png"
+                    webpSrc="/images/icon/whatsapp.webp"
                     alt="WhatsApp"
                     className="w-6 h-6"
                   />

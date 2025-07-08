@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<browserconfig>
+  <msapplication>
+    <tile>
+      <square70x70logo src="/images/logopondokpermai.png"/>
+      <square150x150logo src="/images/logopondokpermai.png"/>
+      <square310x310logo src="/images/logopondokpermai.png"/>
+      <TileColor>#22c55e</TileColor>
+    </tile>
+  </msapplication>
+</browserconfig>

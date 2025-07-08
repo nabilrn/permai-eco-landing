@@ -9,14 +9,28 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
   },
-  plugins: [
-    react(),
-    mode === 'development' &&
-    componentTagger(),
-  ].filter(Boolean),
+  plugins: [react(), mode === "development" && componentTagger()].filter(
+    Boolean
+  ),
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Vendor chunk for React and related libraries
+          vendor: ["react", "react-dom"],
+          // UI libraries chunk
+          ui: ["lucide-react"],
+          // Router chunk if using react-router
+          // router: ['react-router-dom'],
+        },
+      },
+    },
+    // Increase chunk size warning limit to 1000kb
+    chunkSizeWarningLimit: 1000,
   },
 }));

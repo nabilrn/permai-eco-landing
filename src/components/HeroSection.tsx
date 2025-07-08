@@ -62,17 +62,17 @@ const HeroSection = () => {
               Ramah Lingkungan
             </div>
             <h1 className="text-4xl md:text-6xl font-bold text-gray-800 mb-6">
-              Bank Sampah
-              <span className="block text-shimmer animate-glow">
-                Pondok Permai
+              Bank Sampah Pondok Permai
+              <span className="block text-shimmer animate-glow text-green-600">
+                Padang - Pengelolaan Sampah Terpadu
               </span>
             </h1>
-            <p
-              className="text-xl text-gray-600 mb-8 leading-relaxed animate-fade-in-up"
+            <h2
+              className="text-xl text-gray-600 mb-8 leading-relaxed animate-fade-in-up font-medium"
               style={{ animationDelay: "0.2s" }}
             >
               Bersama Wujudkan Lingkungan Bersih dan Berkelanjutan
-            </p>
+            </h2>
             <p
               className="text-gray-500 mb-8 animate-fade-in-up"
               style={{ animationDelay: "0.4s" }}
@@ -112,8 +112,10 @@ const HeroSection = () => {
               <div className="relative">
                 <img
                   src="/images/banksampahpp.png"
-                  alt="Lingkungan Hijau Bank Sampah"
+                  alt="Bank Sampah Pondok Permai Padang - Pengelolaan Sampah Terpadu untuk Lingkungan Bersih dan Berkelanjutan"
                   className="rounded-2xl shadow-2xl w-full h-[500px] object-cover parallax-scroll hover:scale-105 transition-transform duration-500"
+                  loading="eager"
+                  decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-green-600/10 to-emerald-600/10 rounded-2xl"></div>
               </div>

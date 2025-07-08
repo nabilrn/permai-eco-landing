@@ -1,14 +1,41 @@
-User-agent: Googlebot
+# Sitemap
+User-Agent: *
 Allow: /
 
-User-agent: Bingbot
+# Sitemap XML
+Sitemap: https://banksampah.pondokpermai.my.id/sitemap.xml
+
+# Allow all search engines
+User-Agent: Googlebot
 Allow: /
 
-User-agent: Twitterbot
+User-Agent: Bingbot
 Allow: /
 
-User-agent: facebookexternalhit
+User-Agent: Slurp
 Allow: /
 
-User-agent: *
+User-Agent: DuckDuckBot
 Allow: /
+
+User-Agent: Baiduspider
+Allow: /
+
+User-Agent: facebookexternalhit
+Allow: /
+
+User-Agent: Twitterbot
+Allow: /
+
+# Allow social media crawlers
+User-Agent: WhatsApp
+Allow: /
+
+User-Agent: Telegram
+Allow: /
+
+User-Agent: LinkedInBot
+Allow: /
+
+# Cache delay
+Crawl-delay: 1
