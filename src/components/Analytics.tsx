@@ -11,6 +11,12 @@ import {
   fbPixel,
 } from "@/lib/analytics";
 
+type QueuedAnalyticsCall = IArguments | unknown[];
+
+type GtagFunction = ((...args: unknown[]) => void) & {
+  q?: QueuedAnalyticsCall[];
+};
+
 const Analytics = () => {
   const location = useLocation();
 
@@ -23,12 +29,15 @@ const Analytics = () => {
       document.head.appendChild(script);
 
       script.onload = () => {
+        const existingGtag = window.gtag as GtagFunction | undefined;
+
         window.gtag =
-          window.gtag ||
-          function () {
-            (window.gtag as any).q = (window.gtag as any).q || [];
-            (window.gtag as any).q.push(arguments);
-          };
+          existingGtag ||
+          ((...args: unknown[]) => {
+            const queuedGtag = window.gtag as GtagFunction;
+            queuedGtag.q = queuedGtag.q || [];
+            queuedGtag.q.push(args);
+          });
         window.gtag("js", new Date());
         window.gtag("config", GA_TRACKING_ID, {
           page_path: window.location.pathname,

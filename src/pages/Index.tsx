@@ -31,8 +31,8 @@ const Index = () => {
       <SEO
         title="Bank Sampah Pondok Permai Padang - Pengelolaan Sampah Terpadu untuk Lingkungan Bersih"
         description="Bank Sampah Pondok Permai adalah solusi pengelolaan sampah terpadu di Padang, Sumatera Barat. Layanan pengumpulan, pemilahan, dan daur ulang sampah untuk lingkungan berkelanjutan."
-        image="https://banksampah.pondokpermai.my.id/images/banksampahpp.png"
-        url="https://banksampah.pondokpermai.my.id"
+        image="https://pondokpermai.my.id/images/banksampahpp.png"
+        url="https://pondokpermai.my.id"
         type="website"
       />
       <ScrollAnimations />

@@ -1,8 +1,13 @@
+const readEnvString = (key: string): string => {
+  const value = (import.meta.env as Record<string, unknown>)[key];
+  return typeof value === "string" ? value.trim() : "";
+};
+
 // Google Analytics 4 Configuration
-export const GA_TRACKING_ID = "G-XXXXXXXXXX"; // Replace with your GA4 tracking ID
+export const GA_TRACKING_ID = readEnvString("VITE_GA_TRACKING_ID");
 
 // Google Tag Manager Configuration
-export const GTM_ID = "GTM-XXXXXXX"; // Replace with your GTM ID
+export const GTM_ID = readEnvString("VITE_GTM_ID");
 
 // Page view tracking
 export const pageview = (url: string) => {
@@ -76,7 +81,7 @@ export const trackSocialMediaClick = (platform: string) => {
 };
 
 // Facebook Pixel tracking
-export const FB_PIXEL_ID = "YOUR_FB_PIXEL_ID"; // Replace with your Facebook Pixel ID
+export const FB_PIXEL_ID = readEnvString("VITE_FB_PIXEL_ID");
 
 export const fbPixel = {
   pageView: () => {
@@ -84,7 +89,7 @@ export const fbPixel = {
       window.fbq("track", "PageView");
     }
   },
-  track: (event: string, options?: any) => {
+  track: (event: string, options?: Record<string, unknown>) => {
     if (typeof window !== "undefined" && window.fbq) {
       window.fbq("track", event, options);
     }
@@ -92,18 +97,20 @@ export const fbPixel = {
 };
 
 // Hotjar tracking
-export const HOTJAR_ID = "YOUR_HOTJAR_ID"; // Replace with your Hotjar ID
+export const HOTJAR_ID = readEnvString("VITE_HOTJAR_ID");
 export const HOTJAR_VERSION = 6;
 
 // Microsoft Clarity tracking
-export const CLARITY_ID = "YOUR_CLARITY_ID"; // Replace with your Clarity ID
+export const CLARITY_ID = readEnvString("VITE_CLARITY_ID");
 
 // Declare global types for tracking scripts
+type AnalyticsFunction = (...args: unknown[]) => void;
+
 declare global {
   interface Window {
-    gtag?: (...args: any[]) => void;
-    fbq?: (...args: any[]) => void;
-    hj?: (...args: any[]) => void;
-    clarity?: (...args: any[]) => void;
+    gtag?: AnalyticsFunction;
+    fbq?: AnalyticsFunction;
+    hj?: AnalyticsFunction;
+    clarity?: AnalyticsFunction;
   }
 }

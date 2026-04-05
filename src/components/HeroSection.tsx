@@ -1,20 +1,28 @@
-import { Button } from "@/components/ui/button";
-import { ArrowDown, Sparkles } from "lucide-react";
-import ParticleBackground from "./ParticleBackground";
-import FloatingElements from "./FloatingElements";
-import { useEffect, useState } from "react";
+import { ChevronDown } from "lucide-react";
+import { useEffect, useState, useCallback } from "react";
 
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
-    setIsVisible(true);
+    const timer = setTimeout(() => setIsVisible(true), 100);
+    return () => clearTimeout(timer);
   }, []);
 
+  const handleScroll = useCallback(() => {
+    setScrollY(window.scrollY);
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [handleScroll]);
+
   const scrollToNextSection = () => {
-    const nextSection = document.getElementById("gallery");
+    const nextSection = document.getElementById("visitor-stats");
     if (nextSection) {
-      const headerHeight = 100; // Height of floating header + padding
+      const headerHeight = 80;
       const elementPosition = nextSection.getBoundingClientRect().top;
       const offsetPosition =
         elementPosition + window.pageYOffset - headerHeight;
@@ -29,105 +37,104 @@ const HeroSection = () => {
   return (
     <section
       id="home"
-      className="min-h-screen bg-gradient-to-br from-green-50 via-emerald-50 to-white flex items-center relative overflow-hidden"
+      className="relative min-h-screen flex items-end overflow-hidden"
     >
-      {/* Particle Background */}
-      <ParticleBackground className="absolute inset-0 z-0" />
-
-      {/* Floating Elements */}
-      <FloatingElements />
-
-      {/* Animated Background Orbs */}
-      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-green-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float"></div>
+      {/* Background Image with subtle parallax */}
       <div
-        className="absolute top-1/3 right-1/4 w-72 h-72 bg-emerald-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float"
-        style={{ animationDelay: "2s" }}
-      ></div>
-      <div
-        className="absolute bottom-1/4 left-1/3 w-80 h-80 bg-lime-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float"
-        style={{ animationDelay: "4s" }}
-      ></div>
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat photo-graded parallax-bg"
+        style={{
+          backgroundImage:
+            "url('https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=1920&q=85')",
+          transform: `translateY(${scrollY * 0.15}px)`,
+        }}
+      />
 
-      <div className="container mx-auto px-4 py-20 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      {/* Cinematic dark gradient overlay - darker at bottom */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(15,23,20,0.3) 0%, rgba(15,23,20,0.5) 40%, rgba(15,23,20,0.75) 70%, rgba(15,23,20,0.92) 100%)",
+        }}
+      />
+
+      {/* Content - anchored at bottom-left */}
+      <div className="relative z-10 max-w-[1200px] mx-auto px-6 pb-24 pt-48 w-full">
+        <div className="max-w-2xl">
+          {/* Small caps label */}
           <div
-            className={`transition-all duration-1000 ${
+            className={`transition-all duration-700 delay-200 ${
               isVisible
-                ? "animate-fade-in-up opacity-100"
-                : "opacity-0 translate-y-8"
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-6"
             }`}
           >
-            <div className="mb-4 inline-flex items-center gap-2 bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-medium animate-pulse-green">
-              <Sparkles className="w-4 h-4" />
-              Ramah Lingkungan
-            </div>
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-800 mb-6">
-              Bank Sampah Pondok Permai
-              <span className="block text-shimmer animate-glow text-green-600">
-                Padang - Pengelolaan Sampah Terpadu
-              </span>
-            </h1>
-            <h2
-              className="text-xl text-gray-600 mb-8 leading-relaxed animate-fade-in-up font-medium"
-              style={{ animationDelay: "0.2s" }}
-            >
-              Bersama Wujudkan Lingkungan Bersih dan Berkelanjutan
-            </h2>
-            <p
-              className="text-gray-500 mb-8 animate-fade-in-up"
-              style={{ animationDelay: "0.4s" }}
-            >
-              Bergabunglah dengan komunitas peduli lingkungan untuk menciptakan
-              masa depan yang lebih hijau dan sustainable melalui pengelolaan
-              sampah yang bertanggung jawab.
-            </p>
-            <div
-              className="flex flex-col sm:flex-row gap-4 animate-fade-in-up"
-              style={{ animationDelay: "0.6s" }}
-            >
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl animate-bounce-soft"
-              >
-                Bergabung Sekarang
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="border-green-600 text-green-600 hover:bg-green-50 transform hover:scale-105 transition-all duration-200 backdrop-blur-sm"
-              >
-                Pelajari Lebih Lanjut
-              </Button>
+            <div className="inline-block bg-white/10 backdrop-blur-md px-6 py-3 rounded-full mb-6 border border-white/20">
+              <p className="text-base sm:text-lg md:text-xl font-bold tracking-wide text-white">
+                Bank Sampah Pondok Permai
+              </p>
             </div>
           </div>
-          <div
-            className={`transition-all duration-1000 delay-300 ${
+
+          {/* Large serif headline */}
+          <h1
+            className={`font-serif text-4xl sm:text-5xl md:text-6xl lg:text-[68px] leading-[1.1] text-white mb-6 transition-all duration-700 delay-300 ${
               isVisible
-                ? "animate-slide-in-left opacity-100"
-                : "opacity-0 translate-x-8"
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-6"
+            }`}
+            style={{ textShadow: "0 4px 30px rgba(0,0,0,0.4), 0 2px 8px rgba(0,0,0,0.3)" }}
+          >
+            Wujudkan Lingkungan
+            <br />
+            Bersih Bersama
+          </h1>
+
+          {/* Subtitle */}
+          <p
+            className={`text-lg text-white/75 max-w-[480px] leading-relaxed mb-10 transition-all duration-700 delay-[0.4s] ${
+              isVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-6"
             }`}
           >
-            <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-green-600 to-emerald-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200 animate-pulse-green"></div>
-              <div className="relative">
-                <img
-                  src="/images/banksampahpp.png"
-                  alt="Bank Sampah Pondok Permai Padang - Pengelolaan Sampah Terpadu untuk Lingkungan Bersih dan Berkelanjutan"
-                  className="rounded-2xl shadow-2xl w-full h-[500px] object-cover parallax-scroll hover:scale-105 transition-transform duration-500"
-                  loading="eager"
-                  decoding="async"
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-green-600/10 to-emerald-600/10 rounded-2xl"></div>
-              </div>
-            </div>
+            Bersama wujudkan lingkungan bersih dan berkelanjutan melalui
+            pengelolaan sampah yang bertanggung jawab di Padang, Sumatera Barat.
+          </p>
+
+          {/* CTA Buttons */}
+          <div
+            className={`flex flex-col sm:flex-row gap-4 transition-all duration-700 delay-500 ${
+              isVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-6"
+            }`}
+          >
+            <a
+              href="#blog"
+              className="inline-flex items-center justify-center bg-forest-green hover:brightness-90 text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300 text-base"
+            >
+              Bergabung Sekarang
+            </a>
+            <a
+              href="#gallery"
+              className="inline-flex items-center justify-center border-2 border-white/30 text-white font-semibold px-8 py-4 rounded-lg hover:bg-white hover:text-deep-forest transition-all duration-300 text-base"
+            >
+              Pelajari Lebih Lanjut
+            </a>
           </div>
         </div>
+
+        {/* Scroll indicator */}
         <div
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer group"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 cursor-pointer"
           onClick={scrollToNextSection}
         >
-          <div className="p-2 rounded-full bg-white/20 backdrop-blur-sm group-hover:bg-white/30 transition-all duration-200">
-            <ArrowDown className="w-6 h-6 text-green-600 group-hover:text-green-700 transition-colors" />
+          <div className="flex flex-col items-center gap-2">
+            <span className="text-white/50 text-xs tracking-wider uppercase font-medium">
+              Scroll
+            </span>
+            <ChevronDown className="w-5 h-5 text-white/60 animate-scroll-bounce" />
           </div>
         </div>
       </div>

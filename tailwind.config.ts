@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import tailwindcssAnimate from "tailwindcss-animate";
 
 export default {
   darkMode: ["class"],
@@ -19,9 +20,20 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["Poppins", "sans-serif"],
+        sans: ['"Plus Jakarta Sans"', "sans-serif"],
+        serif: ['"DM Serif Display"', "Georgia", "serif"],
       },
       colors: {
+        /* Nature-immersive palette */
+        "deep-forest": "#0F1714",
+        "forest-green": "#2D6A4F",
+        "living-green": "#40916C",
+        "canopy-light": "#95D5B2",
+        "earth-warm": "#C9A96E",
+        cream: "#FAF8F2",
+        "bark-dark": "#2C2418",
+        "muted-text": "#5C6B63",
+
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -73,20 +85,12 @@ export default {
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
       },
       animation: {
@@ -95,5 +99,5 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [tailwindcssAnimate],
 } satisfies Config;

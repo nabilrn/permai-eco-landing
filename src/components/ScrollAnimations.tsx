@@ -1,11 +1,11 @@
-
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
 const ScrollAnimations = () => {
   useEffect(() => {
-    // Scroll progress bar
     const updateScrollProgress = () => {
-      const scrollProgress = document.querySelector('.scroll-progress') as HTMLElement;
+      const scrollProgress = document.querySelector(
+        ".scroll-progress"
+      ) as HTMLElement;
       if (scrollProgress) {
         const scrollTop = window.pageYOffset;
         const docHeight = document.body.offsetHeight;
@@ -16,43 +16,28 @@ const ScrollAnimations = () => {
       }
     };
 
-    // Scroll animations for elements
     const animateOnScroll = () => {
-      const elements = document.querySelectorAll('.animate-on-scroll');
+      const elements = document.querySelectorAll(".animate-on-scroll");
       elements.forEach((element) => {
         const elementTop = element.getBoundingClientRect().top;
         const elementVisible = 150;
-        
-        if (elementTop < window.innerHeight - elementVisible) {
-          element.classList.add('animate');
-        }
-      });
-    };
 
-    // Parallax effect for hero section
-    const parallaxScroll = () => {
-      const parallaxElements = document.querySelectorAll('.parallax-scroll');
-      const scrolled = window.pageYOffset;
-      
-      parallaxElements.forEach((element) => {
-        const rate = scrolled * -0.5;
-        (element as HTMLElement).style.transform = `translateY(${rate}px)`;
+        if (elementTop < window.innerHeight - elementVisible) {
+          element.classList.add("animate");
+        }
       });
     };
 
     const handleScroll = () => {
       updateScrollProgress();
       animateOnScroll();
-      parallaxScroll();
     };
 
-    window.addEventListener('scroll', handleScroll);
-    
-    // Initial call
+    window.addEventListener("scroll", handleScroll);
     handleScroll();
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 

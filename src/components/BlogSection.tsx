@@ -1,119 +1,130 @@
-import { Leaf } from "lucide-react";
-
 const BlogSection = () => {
   return (
-    <section
-      id="blog"
-      className="py-20 bg-gradient-to-br from-green-50 to-emerald-50"
-    >
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16 animate-on-scroll">
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <Leaf className="w-8 h-8 text-green-600" />
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-              Peduli Lingkungan
-            </h2>
-          </div>
-          <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-            Bersama membangun kesadaran untuk masa depan yang lebih hijau dan
-            berkelanjutan
-          </p>
-        </div>
+    <section id="blog" className="relative overflow-hidden">
+      {/* Editorial two-column — Peduli Lingkungan */}
+      <div className="relative py-20 md:py-28 bg-cream grain-overlay">
+        <div className="relative z-10 max-w-[1200px] mx-auto px-6">
+          <div className="grid lg:grid-cols-[55%_45%] gap-12 lg:gap-16 items-center">
+            {/* Text content — left column */}
+            <div className="animate-on-scroll">
+              <h2 className="font-serif text-3xl md:text-4xl text-deep-forest mb-8">
+                Peduli Lingkungan
+              </h2>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-          {/* Text Content */}
-          <div className="space-y-6 animate-on-scroll">
-            <div className="prose prose-lg text-gray-600 leading-relaxed">
-              <p className="mb-6">
-                <strong className="text-green-700">
-                  Bank Sampah Pondok Permai
-                </strong>{" "}
-                hadir sebagai solusi inovatif dalam mengatasi permasalahan
-                sampah di lingkungan kita. Kami percaya bahwa setiap langkah
-                kecil yang kita ambil hari ini akan memberikan dampak besar bagi
-                generasi mendatang.
-              </p>
+              <div className="space-y-5 text-muted-text leading-relaxed max-w-[580px]">
+                <p className="drop-cap">
+                  Bank Sampah Pondok Permai hadir sebagai solusi inovatif dalam
+                  mengatasi permasalahan sampah di lingkungan kita. Setiap
+                  langkah kecil yang kita ambil hari ini memberikan dampak besar
+                  bagi generasi mendatang.
+                </p>
 
-              <p className="mb-6">
-                Melalui sistem bank sampah, kami mengubah paradigma masyarakat
-                tentang sampah. Yang dulunya dianggap sebagai limbah yang tidak
-                berguna, kini menjadi sumber daya yang memiliki nilai ekonomi.
-                Dengan memilah dan mengumpulkan sampah, kita tidak hanya
-                membersihkan lingkungan, tetapi juga menciptakan peluang ekonomi
-                baru.
-              </p>
-
-              <p className="mb-6">
-                Setiap kilogram sampah yang berhasil dikumpulkan dan didaur
-                ulang adalah kontribusi nyata kita untuk mengurangi pencemaran
-                lingkungan. Mari bersama-sama mewujudkan Padang yang lebih
-                bersih, hijau, dan berkelanjutan untuk anak cucu kita.
-              </p>
-
-              <div className="bg-green-100 border-l-4 border-green-500 p-4 rounded-r-lg">
-                <p className="text-green-800 font-medium italic">
-                  "Bumi bukan warisan dari nenek moyang kita, tetapi titipan
-                  untuk anak cucu kita. Mari jaga bersama!"
+                <p>
+                  Melalui sistem bank sampah, kami mengubah paradigma masyarakat
+                  tentang sampah. Yang dulunya dianggap limbah, kini menjadi
+                  sumber daya dengan nilai ekonomi nyata.
                 </p>
               </div>
-            </div>
-          </div>
 
-          {/* Image Content */}
-          <div className="animate-on-scroll">
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-4">
-                <img
-                  src="/images/pemilahan.png"
-                  alt="Proses pemilahan sampah"
-                  className="rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 object-cover h-48 w-full"
-                />
-                <img
-                  src="/images/penimbangan.png"
-                  alt="Penimbangan sampah"
-                  className="rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 object-cover h-32 w-full"
-                />
+              {/* Pull quote */}
+              <blockquote className="mt-10 pl-6 border-l-4 border-forest-green relative">
+                <span
+                  className="absolute -left-2 -top-6 font-serif text-earth-warm/15 text-[120px] leading-none select-none pointer-events-none"
+                  aria-hidden="true"
+                >
+                  &ldquo;
+                </span>
+                <p className="font-serif text-xl italic text-deep-forest leading-relaxed relative">
+                  Bumi bukan warisan dari nenek moyang kita, tetapi titipan untuk
+                  anak cucu kita.
+                </p>
+              </blockquote>
+
+              <div className="mt-10">
+                <a
+                  href="#location"
+                  className="inline-flex items-center text-sm font-semibold text-forest-green hover:text-living-green transition-colors"
+                >
+                  Bergabung Bersama Kami &rarr;
+                </a>
               </div>
-              <div className="space-y-4 pt-8">
-                <img
-                  src="/images/penjualan.png"
-                  alt="Penjualan hasil daur ulang"
-                  className="rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 object-cover h-32 w-full"
-                />
-                <img
-                  src="/images/kkn.png"
-                  alt="Kegiatan KKN"
-                  className="rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 object-cover h-48 w-full"
-                />
+            </div>
+
+            {/* Photo stack — right column */}
+            <div className="animate-on-scroll">
+              <div className="relative">
+                {/* Larger photo */}
+                <div className="rounded-md overflow-hidden border border-[#E8DFD0]">
+                  <img
+                    src="/images/pemilahan.png"
+                    alt="Proses pemilahan sampah"
+                    className="w-full h-64 md:h-80 object-cover photo-graded"
+                    loading="lazy"
+                  />
+                </div>
+                {/* Smaller overlapping photo */}
+                <div className="absolute -bottom-8 -right-4 md:-right-8 w-2/3 rounded-md overflow-hidden border border-[#E8DFD0] shadow-xl">
+                  <img
+                    src="/images/penimbangan.png"
+                    alt="Penimbangan sampah"
+                    className="w-full h-40 md:h-48 object-cover photo-graded"
+                    loading="lazy"
+                  />
+                </div>
               </div>
+              {/* Spacer for overlap */}
+              <div className="h-12" />
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Call to Action */}
-        <div className="text-center mt-16 animate-on-scroll">
-          <div className="bg-white rounded-2xl p-8 shadow-lg border border-green-100 max-w-3xl mx-auto">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">
-              Mari Bergabung!
-            </h3>
-            <p className="text-gray-600 leading-relaxed mb-6">
-              Setiap sampah yang Anda setorkan adalah investasi untuk masa depan
-              yang lebih hijau. Bergabunglah dengan Bank Sampah Pondok Permai
-              dan rasakan manfaatnya langsung.
+      {/* CTA Banner — Mari Bergabung — full-bleed photo */}
+      <div className="relative py-24 md:py-32 overflow-hidden">
+        {/* Background photo */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat photo-graded"
+          style={{
+            backgroundImage:
+              "url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=1920&q=80')",
+          }}
+        />
+        {/* Dark overlay with green tint */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(135deg, rgba(15,23,20,0.8), rgba(20,40,30,0.85))",
+          }}
+        />
+
+        <div className="relative z-10 max-w-[700px] mx-auto px-6 text-center">
+          <div className="animate-on-scroll">
+            <p className="text-xs font-semibold tracking-[0.2em] uppercase text-canopy-light mb-4">
+              Jadilah Bagian dari Perubahan
             </p>
-            <div className="flex flex-wrap justify-center gap-6 text-sm text-green-700">
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                <span>Lingkungan Bersih</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                <span>Manfaat Ekonomi</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                <span>Komunitas Peduli</span>
-              </div>
+            <h3
+              className="font-serif text-3xl md:text-5xl text-white mb-4"
+              style={{ textShadow: "0 2px 20px rgba(0,0,0,0.3)" }}
+            >
+              Mari Bergabung
+            </h3>
+            <p className="text-white/65 mb-10 max-w-md mx-auto leading-relaxed">
+              Setiap sampah yang Anda setorkan adalah investasi untuk masa depan
+              yang lebih hijau.
+            </p>
+            <a
+              href="#location"
+              className="inline-flex items-center justify-center bg-white text-deep-forest font-semibold px-10 py-4 rounded-lg hover:bg-cream transition-colors text-base"
+            >
+              Daftar Sekarang
+            </a>
+            <div className="flex flex-wrap justify-center gap-6 mt-10 text-sm text-white/50">
+              <span>Kelola Sampah</span>
+              <span className="text-white/20">|</span>
+              <span>Edukasi</span>
+              <span className="text-white/20">|</span>
+              <span>Komunitas</span>
             </div>
           </div>
         </div>

@@ -39,27 +39,27 @@ Website ini telah dioptimalkan untuk mendapatkan ranking #1 di Google untuk keyw
 ### Development
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm run dev
 ```
 
 ### Production Build
 
 ```bash
-npm run build
+pnpm run build
 ```
 
 ### SEO Tools
 
 ```bash
 # Check SEO health
-npm run seo:check
+pnpm run seo:check
 
 # Submit sitemap to search engines
-npm run seo:submit
+pnpm run seo:submit
 
 # Build and submit (recommended for deployment)
-npm run build:seo
+pnpm run build:seo
 ```
 
 ## 📊 SEO Monitoring
@@ -73,7 +73,7 @@ npm run build:seo
 ### Google Analytics Setup
 
 1. Buat property di [Google Analytics](https://analytics.google.com)
-2. Update `GA_TRACKING_ID` di `src/lib/analytics.ts`
+2. Isi variabel environment analytics di `.env` (lihat `.env.example`)
 3. Deploy ulang website
 
 ### Google My Business (PENTING!)
@@ -216,7 +216,7 @@ Changes made via Lovable will be committed automatically to this repo.
 
 If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+The only requirement is having Node.js & pnpm installed - [install Node.js with nvm](https://github.com/nvm-sh/nvm#installing-and-updating), then install pnpm via `npm i -g pnpm`
 
 Follow these steps:
 
@@ -228,10 +228,10 @@ git clone <YOUR_GIT_URL>
 cd <YOUR_PROJECT_NAME>
 
 # Step 3: Install the necessary dependencies.
-npm i
+pnpm install
 
 # Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+pnpm run dev
 ```
 
 **Edit a file directly in GitHub**

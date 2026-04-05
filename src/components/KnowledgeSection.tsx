@@ -1,101 +1,95 @@
-import { BookOpen, ChevronLeft, ChevronRight } from "lucide-react";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-
 const KnowledgeSection = () => {
-  const knowledgeItems = [
+  const categories = [
     {
-      id: 1,
-      title: "Pemilahan Sampah Organik",
+      title: "Organik",
       description:
-        "Sampah organik adalah sampah yang berasal dari makhluk hidup seperti sisa makanan, daun, dan ranting. Sampah ini mudah terurai secara alami dan dapat dijadikan kompos untuk menyuburkan tanah. Pemilahan sampah organik sangat penting untuk mengurangi volume sampah yang berakhir di tempat pembuangan akhir.",
-      image:
-        "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=500&h=400&fit=crop&crop=center",
+        "Sisa makanan, daun, dan ranting yang mudah terurai secara alami dan dapat dijadikan kompos.",
+      icon: (
+        <svg className="w-8 h-8" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M16 28V16" />
+          <path d="M16 16c-2-4-8-6-8-12a8 8 0 0116 0c0 6-6 8-8 12z" />
+          <path d="M12 28h8" />
+        </svg>
+      ),
     },
     {
-      id: 2,
-      title: "Sampah Anorganik dan Daur Ulang",
+      title: "Anorganik",
       description:
-        "Sampah anorganik seperti plastik, kertas, logam, dan kaca dapat didaur ulang menjadi produk baru. Proses daur ulang membantu menghemat sumber daya alam dan mengurangi pencemaran lingkungan. Setiap jenis sampah anorganik memiliki cara pengolahan yang berbeda untuk menghasilkan produk berkualitas.",
-      image:
-        "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=500&h=400&fit=crop&crop=center",
+        "Plastik, kertas, logam, dan kaca yang dapat didaur ulang menjadi produk baru.",
+      icon: (
+        <svg className="w-8 h-8" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M8 6l8-2 8 2v10c0 6-8 12-8 12s-8-6-8-12V6z" />
+          <path d="M12 16l3 3 5-6" />
+        </svg>
+      ),
     },
     {
-      id: 3,
-      title: "Manfaat Bank Sampah",
+      title: "B3 / Berbahaya",
       description:
-        "Bank sampah memberikan nilai ekonomis pada sampah yang biasanya dibuang begitu saja. Melalui sistem tabungan, masyarakat dapat menukarkan sampah dengan uang atau barang kebutuhan sehari-hari. Ini mendorong partisipasi aktif masyarakat dalam pengelolaan sampah dan menciptakan ekonomi sirkular.",
-      image:
-        "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=500&h=400&fit=crop&crop=center",
-    },
-    {
-      id: 4,
-      title: "Teknik Penimbangan Sampah",
-      description:
-        "Penimbangan sampah dilakukan dengan cermat untuk menentukan nilai tukar yang tepat. Setiap jenis sampah memiliki harga yang berbeda tergantung pada kualitas dan permintaan pasar. Proses ini memerlukan ketelitian dan kejujuran untuk menjaga kepercayaan nasabah bank sampah.",
-      image: "images/penimbangan.png",
+        "Limbah beracun seperti baterai, elektronik, dan bahan kimia yang memerlukan penanganan khusus.",
+      icon: (
+        <svg className="w-8 h-8" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M16 4l12 20H4L16 4z" />
+          <path d="M16 14v4" />
+          <circle cx="16" cy="22" r="1" fill="currentColor" />
+        </svg>
+      ),
     },
   ];
 
   return (
-    <section
-      id="knowledge"
-      className="py-20 bg-gradient-to-br from-green-50 to-blue-50"
-    >
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16 animate-on-scroll">
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <BookOpen className="w-6 h-6 text-green-600" />
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-              Pengetahuan Pemilahan Sampah
-            </h2>
-          </div>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Pelajari lebih dalam tentang teknik pemilahan sampah yang benar dan
-            manfaatnya bagi lingkungan
+    <section id="knowledge" className="relative py-20 md:py-28 overflow-hidden">
+      {/* Full-bleed background photo */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat photo-graded"
+        style={{
+          backgroundImage:
+            "url('https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=1920&q=80')",
+        }}
+      />
+      {/* Warm fog overlay */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(135deg, rgba(30,50,35,0.85), rgba(20,35,25,0.88))",
+        }}
+      />
+
+      <div className="relative z-10 max-w-[1200px] mx-auto px-6">
+        {/* Text overlay */}
+        <div className="mb-14 animate-on-scroll">
+          <p className="text-xs font-semibold tracking-[0.2em] uppercase text-canopy-light mb-4">
+            Pengetahuan
+          </p>
+          <h2
+            className="font-serif text-3xl md:text-5xl text-white mb-4"
+            style={{ textShadow: "0 2px 20px rgba(0,0,0,0.3)" }}
+          >
+            Pemilahan Sampah
+          </h2>
+          <p className="text-white/70 max-w-lg leading-relaxed">
+            Pelajari teknik pemilahan sampah yang benar dan manfaatnya bagi
+            lingkungan dan masyarakat sekitar.
           </p>
         </div>
 
-        <div className="max-w-6xl mx-auto animate-on-scroll">
-          <Carousel className="w-full">
-            <CarouselContent>
-              {knowledgeItems.map((item) => (
-                <CarouselItem key={item.id}>
-                  <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 min-h-[400px]">
-                      {/* Content - Left Side */}
-                      <div className="p-8 lg:p-12 flex flex-col justify-center order-2 lg:order-1">
-                        <h3 className="text-2xl lg:text-3xl font-bold text-gray-800 mb-6">
-                          {item.title}
-                        </h3>
-                        <p className="text-gray-600 leading-relaxed text-lg">
-                          {item.description}
-                        </p>
-                      </div>
-
-                      {/* Image - Right Side */}
-                      <div className="relative order-1 lg:order-2">
-                        <img
-                          src={item.image}
-                          alt={item.title}
-                          className="w-full h-64 lg:h-full object-cover"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-l from-green-500/10 to-transparent"></div>
-                      </div>
-                    </div>
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-
-            <CarouselPrevious className="left-4 bg-white/80 hover:bg-white" />
-            <CarouselNext className="right-4 bg-white/80 hover:bg-white" />
-          </Carousel>
+        {/* Glassmorphism category cards */}
+        <div className="grid sm:grid-cols-3 gap-4 md:gap-6 animate-on-scroll">
+          {categories.map((cat, index) => (
+            <div
+              key={index}
+              className="stagger-child p-6 md:p-8 rounded-lg border border-white/15 bg-white/[0.07] backdrop-blur-md transition-all duration-300 hover:bg-white/[0.12] hover:border-white/25"
+            >
+              <div className="text-white/80 mb-4">{cat.icon}</div>
+              <h3 className="font-serif text-xl text-white mb-2">
+                {cat.title}
+              </h3>
+              <p className="text-white/60 text-sm leading-relaxed">
+                {cat.description}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

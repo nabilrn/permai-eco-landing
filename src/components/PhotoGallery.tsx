@@ -1,87 +1,107 @@
-import { Camera } from "lucide-react";
-
 const PhotoGallery = () => {
   const images = [
     {
       url: "/images/griyaluhu.png",
-      alt: "Kegiatan Bank Sampah Pondok Permai di Griya Luhu - Program Pengelolaan Sampah Komunitas",
+      alt: "Kegiatan Bank Sampah Pondok Permai di Griya Luhu",
       title: "Program Griya Luhu",
+      size: "large",
     },
     {
       url: "/images/kkn.png",
-      alt: "Kegiatan KKN Mahasiswa dalam Program Bank Sampah Pondok Permai - Edukasi Lingkungan",
+      alt: "Kegiatan KKN Mahasiswa dalam Program Bank Sampah",
       title: "Program KKN",
+      size: "medium",
     },
     {
       url: "/images/goro.png",
-      alt: "Kegiatan Gotong Royong Bersama Bank Sampah Pondok Permai - Aksi Bersih Lingkungan",
+      alt: "Gotong Royong Bersama Bank Sampah Pondok Permai",
       title: "Gotong Royong",
+      size: "medium",
     },
     {
       url: "/images/pemilahan.png",
-      alt: "Proses Pemilahan Sampah di Bank Sampah Pondok Permai - Sortir Sampah Organik dan Anorganik",
+      alt: "Proses Pemilahan Sampah Organik dan Anorganik",
       title: "Pemilahan Sampah",
+      size: "small",
     },
     {
       url: "/images/penimbangan.png",
-      alt: "Penimbangan Sampah di Bank Sampah Pondok Permai - Sistem Pencatatan Sampah Terpadu",
+      alt: "Penimbangan Sampah di Bank Sampah Pondok Permai",
       title: "Penimbangan Sampah",
+      size: "small",
     },
     {
       url: "/images/penjualan.png",
-      alt: "Penjualan Hasil Olahan Sampah Bank Sampah Pondok Permai - Ekonomi Sirkular",
+      alt: "Penjualan Hasil Olahan Sampah - Ekonomi Sirkular",
       title: "Penjualan Hasil",
+      size: "wide",
     },
     {
       url: "/images/walikota.png",
-      alt: "Kunjungan Walikota Padang ke Bank Sampah Pondok Permai - Dukungan Pemerintah Daerah",
+      alt: "Kunjungan Walikota Padang ke Bank Sampah Pondok Permai",
       title: "Kunjungan Walikota",
-    },
-    {
-      url: "/images/map.png",
-      alt: "Peta Lokasi Bank Sampah Pondok Permai Padang - Limau Manis Pauh Sumatera Barat",
-      title: "Peta Lokasi",
+      size: "small",
     },
   ];
 
   return (
-    <section id="gallery" className="py-20 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16 animate-on-scroll">
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <Camera className="w-6 h-6 text-green-600" />
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-              Galeri Kegiatan Bank Sampah Pondok Permai
-            </h2>
-          </div>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+    <section id="gallery" className="relative py-20 md:py-28 overflow-hidden topo-pattern">
+      <div className="relative z-10 max-w-[1200px] mx-auto px-6">
+        {/* Section header */}
+        <div className="mb-14 animate-on-scroll">
+          <h2 className="font-serif text-3xl md:text-4xl text-deep-forest mb-3">
+            Galeri Kegiatan
+          </h2>
+          <p className="text-muted-text max-w-xl">
             Dokumentasi berbagai kegiatan dan program pengelolaan sampah yang
-            telah dilaksanakan oleh Bank Sampah Pondok Permai di Padang,
-            Sumatera Barat
+            telah dilaksanakan oleh Bank Sampah Pondok Permai.
           </p>
         </div>
 
-        <div className="max-w-6xl mx-auto animate-on-scroll">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-            {images.map((image, index) => (
+        {/* Asymmetric masonry grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[180px] md:auto-rows-[200px] gap-2 md:gap-3 animate-on-scroll">
+          {images.map((image, index) => {
+            const spanClass =
+              image.size === "large"
+                ? "col-span-2 row-span-2"
+                : image.size === "wide"
+                ? "col-span-2"
+                : "";
+
+            return (
               <div
                 key={index}
-                className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                className={`stagger-child group relative overflow-hidden rounded-md ${spanClass}`}
               >
-                <div className="aspect-square">
-                  <img
-                    src={image.url}
-                    alt={image.alt}
-                    title={image.title}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                    loading="lazy"
-                    decoding="async"
-                  />
+                <img
+                  src={image.url}
+                  alt={image.alt}
+                  title={image.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04] photo-graded"
+                  loading="lazy"
+                  decoding="async"
+                />
+                {/* Hover overlay with caption */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                  <span className="text-white text-sm font-medium px-4 pb-4">
+                    {image.title}
+                  </span>
                 </div>
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
               </div>
-            ))}
-          </div>
+            );
+          })}
+        </div>
+
+        {/* View all link */}
+        <div className="mt-10 text-right animate-on-scroll">
+          <a
+            href="https://www.instagram.com/bank_sampahpp"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm font-medium text-forest-green hover:text-living-green transition-colors"
+          >
+            Lihat Semua Dokumentasi &rarr;
+          </a>
         </div>
       </div>
     </section>

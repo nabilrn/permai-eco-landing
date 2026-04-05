@@ -176,7 +176,7 @@ function simulateSearchResults() {
   );
 
   log("\n🚀 Next Steps:", colors.blue);
-  log("1. Jalankan: npm run seo:submit", colors.reset);
+  log("1. Jalankan: pnpm run seo:submit", colors.reset);
   log("2. Setup Google Search Console", colors.reset);
   log("3. Buat Google My Business", colors.reset);
   log("4. Mulai content marketing", colors.reset);

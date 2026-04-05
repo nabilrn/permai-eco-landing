@@ -100,10 +100,10 @@ Bangun backlink dari:
 Implementasikan tracking untuk mengukur performa:
 
 ```javascript
-// Ganti dengan ID yang real
-export const GA_TRACKING_ID = "G-XXXXXXXXXX";
-export const GTM_ID = "GTM-XXXXXXX";
-export const FB_PIXEL_ID = "YOUR_FB_PIXEL_ID";
+// Isi di .env sesuai kebutuhan
+VITE_GA_TRACKING_ID=G-XXXXXXXXXX
+VITE_GTM_ID=GTM-XXXXXXX
+VITE_FB_PIXEL_ID=YOUR_FB_PIXEL_ID
 ```
 
 ### 6. **Local Citations**
@@ -167,14 +167,14 @@ Tools untuk monitoring:
 
 ```bash
 # Install tracking packages (if needed)
-npm install react-ga4 react-gtm-module
+pnpm add react-ga4 react-gtm-module
 ```
 
 ### Image Optimization
 
 ```bash
 # Convert images to WebP format
-npm install sharp
+pnpm add sharp
 node scripts/convert-images.js
 ```
 
@@ -182,8 +182,8 @@ node scripts/convert-images.js
 
 ```bash
 # Test performance
-npm run build
-npm run lighthouse
+pnpm run build
+pnpm run lighthouse
 ```
 
 ## 📞 Next Actions Required

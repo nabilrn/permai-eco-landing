@@ -11,8 +11,8 @@ interface SEOProps {
 export const SEO: React.FC<SEOProps> = ({
   title = "Bank Sampah Pondok Permai Padang - Pengelolaan Sampah Terpadu",
   description = "Solusi pengelolaan sampah terpadu untuk lingkungan bersih dan berkelanjutan di Padang. Layanan pengumpulan, pemilahan sampah, dan edukasi lingkungan.",
-  image = "https://banksampah.pondokpermai.my.id/images/banksampahpp.png",
-  url = "https://banksampah.pondokpermai.my.id",
+  image = "https://pondokpermai.my.id/images/banksampahpp.png",
+  url = "https://pondokpermai.my.id",
   type = "website",
 }) => {
   useEffect(() => {
@@ -96,8 +96,8 @@ export const SEO: React.FC<SEOProps> = ({
       mainEntity: {
         "@type": "Organization",
         name: "Bank Sampah Pondok Permai",
-        url: "https://banksampah.pondokpermai.my.id",
-        logo: "https://banksampah.pondokpermai.my.id/images/logopondokpermai.png",
+        url: "https://pondokpermai.my.id",
+        logo: "https://pondokpermai.my.id/images/logopondokpermai.png",
         description:
           "Bank Sampah Pondok Permai adalah organisasi pengelolaan sampah terpadu di Padang",
         address: {
