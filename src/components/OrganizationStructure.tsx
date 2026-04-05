@@ -47,23 +47,23 @@ const OrganizationStructure = () => {
     initials: string;
     featured?: boolean;
   }) => (
-    <div className={`text-center ${featured ? "" : "flex-1 min-w-0"}`}>
+    <div className={`text-center ${featured ? "" : "w-full sm:w-auto sm:flex-1"}`}>
       <div
-        className={`inline-flex items-center justify-center rounded-full bg-forest-green/10 text-forest-green font-bold mb-3 ${
+        className={`inline-flex items-center justify-center rounded-full bg-[#2D6A4F]/10 text-[#2D6A4F] font-bold mb-3 ${
           featured ? "w-16 h-16 text-xl" : "w-12 h-12 text-sm"
         }`}
       >
         {initials}
       </div>
       <p
-        className={`uppercase tracking-wider text-muted-text font-semibold mb-1 ${
+        className={`uppercase tracking-wider text-[#6B7280] font-semibold mb-2 ${
           featured ? "text-xs" : "text-[11px]"
         }`}
       >
         {position}
       </p>
       <p
-        className={`text-deep-forest ${
+        className={`text-[#1B1B1B] ${
           featured
             ? "text-xl font-serif italic"
             : "text-sm font-semibold leading-snug"
@@ -75,13 +75,22 @@ const OrganizationStructure = () => {
   );
 
   return (
-    <section id="organization" className="relative py-20 md:py-28 bg-white overflow-hidden">
-      <div className="relative max-w-[800px] mx-auto px-6">
+    <section id="organization" className="relative py-20 md:py-28 overflow-hidden">
+      {/* Background image with overlay */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: "url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=1920&q=70')"
+        }}
+      />
+      <div className="absolute inset-0 bg-[#F8F9F6]/95" />
+      
+      <div className="relative max-w-[1200px] mx-auto px-6">
         <div className="mb-14 animate-on-scroll">
-          <h2 className="font-serif text-3xl md:text-4xl text-deep-forest mb-3">
+          <h2 className="font-serif text-3xl md:text-4xl text-[#1B1B1B] mb-3">
             Struktur Kepengurusan
           </h2>
-          <p className="text-muted-text max-w-xl">
+          <p className="text-[#6B7280] max-w-xl">
             Tim yang berkomitmen memajukan Bank Sampah Pondok Permai.
           </p>
         </div>
@@ -89,25 +98,37 @@ const OrganizationStructure = () => {
         {/* Org chart */}
         <div className="animate-on-scroll">
           {/* Director - featured at top */}
-          <PersonCard {...director} featured />
+          <div className="mb-8">
+            <PersonCard {...director} featured />
+          </div>
 
           {/* Connecting line */}
-          <div className="w-px h-10 bg-[#D4C9B0] mx-auto my-2" />
+          <div className="w-px h-10 bg-[#E5E7EB] mx-auto my-2" />
 
           {/* Second tier */}
-          <div className="flex flex-col sm:flex-row gap-8 sm:gap-6 justify-center items-start">
-            {secondTier.map((member) => (
-              <PersonCard key={member.position} {...member} />
+          <div className="flex flex-col gap-6 sm:flex-row sm:gap-6 justify-center items-center mb-8">
+            {secondTier.map((member, index) => (
+              <div key={member.position} className="w-full sm:w-auto">
+                <PersonCard {...member} />
+                {index < secondTier.length - 1 && (
+                  <div className="hidden sm:block w-px h-8 bg-[#E5E7EB] mx-auto my-4" />
+                )}
+              </div>
             ))}
           </div>
 
           {/* Connecting line */}
-          <div className="w-px h-10 bg-[#D4C9B0] mx-auto my-2" />
+          <div className="w-px h-10 bg-[#E5E7EB] mx-auto my-2" />
 
           {/* Third tier */}
-          <div className="flex flex-col sm:flex-row gap-8 sm:gap-6 justify-center items-start">
-            {thirdTier.map((member) => (
-              <PersonCard key={member.position} {...member} />
+          <div className="flex flex-col gap-6 sm:flex-row sm:gap-6 justify-center items-center">
+            {thirdTier.map((member, index) => (
+              <div key={member.position} className="w-full sm:w-auto">
+                <PersonCard {...member} />
+                {index < thirdTier.length - 1 && (
+                  <div className="hidden sm:block w-px h-8 bg-[#E5E7EB] mx-auto my-4" />
+                )}
+              </div>
             ))}
           </div>
         </div>
