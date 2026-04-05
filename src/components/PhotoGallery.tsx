@@ -59,7 +59,7 @@ const PhotoGallery = () => {
         </div>
 
         {/* Asymmetric masonry grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[180px] md:auto-rows-[200px] gap-2 md:gap-3 animate-on-scroll">
+        <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[140px] sm:auto-rows-[160px] md:auto-rows-[200px] gap-2 md:gap-3 animate-on-scroll">
           {images.map((image, index) => {
             const spanClass =
               image.size === "large"
@@ -81,9 +81,9 @@ const PhotoGallery = () => {
                   loading="lazy"
                   decoding="async"
                 />
-                {/* Hover overlay with caption */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                  <span className="text-white text-sm font-medium px-4 pb-4">
+                {/* Hover overlay with caption - show on touch devices */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 sm:group-hover:opacity-100 opacity-100 sm:opacity-0 transition-opacity duration-300 flex items-end">
+                  <span className="text-white text-xs sm:text-sm font-medium px-3 sm:px-4 pb-3 sm:pb-4">
                     {image.title}
                   </span>
                 </div>

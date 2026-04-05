@@ -37,10 +37,10 @@ const LocationMap = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 items-start">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
           {/* Contact info */}
-          <div className="animate-on-scroll">
-            <div className="space-y-6">
+          <div className="animate-on-scroll order-2 lg:order-1">
+            <div className="space-y-5 sm:space-y-6">
               {contactItems.map((item) => {
                 const IconComponent = item.icon;
                 return (
@@ -63,17 +63,18 @@ const LocationMap = () => {
           </div>
 
           {/* Map */}
-          <div className="animate-on-scroll">
-            <div className="rounded-lg overflow-hidden border border-[#E8DFD0]">
+          <div className="animate-on-scroll order-1 lg:order-2">
+            <div className="rounded-lg overflow-hidden border border-[#E8DFD0] mb-6 lg:mb-0">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31914.23035780162!2d100.46165359999999!3d-0.9422627000000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2fd4b79a46b310cf%3A0xaa3d8901ce9ad2da!2sBank%20Sampah%20Pondok%20Permai!5e0!3m2!1sid!2sid!4v1751106293507!5m2!1sid!2sid"
                 width="100%"
-                height="420"
+                height="300"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 title="Lokasi Bank Sampah Pondok Permai"
+                className="sm:h-[420px]"
               />
             </div>
           </div>

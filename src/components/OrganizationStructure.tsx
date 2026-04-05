@@ -115,32 +115,32 @@ const OrganizationStructure = () => {
         {/* Org chart */}
         <div className="animate-on-scroll">
           {/* Director - featured at top */}
-          <div className="mb-4">
-            <PersonCard 
+          <div className="mb-6 sm:mb-4">
+            <PersonCard
               position={director.position}
               names={[director.name]}
               initials={director.initials}
-              featured 
+              featured
             />
           </div>
 
           {/* Connecting line from director to second tier */}
-          <div className="flex justify-center mb-4">
-            <div className="w-px h-10 bg-[#2D6A4F]/30" />
+          <div className="flex justify-center mb-4 sm:mb-6">
+            <div className="w-px h-8 sm:h-10 bg-[#2D6A4F]/30" />
           </div>
 
-          {/* Horizontal line for second tier */}
-          <div className="relative mb-4">
+          {/* Horizontal line for second tier - desktop only */}
+          <div className="relative mb-4 sm:mb-8">
             <div className="hidden sm:block">
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-[#2D6A4F]/30" />
             </div>
           </div>
 
-          {/* Second tier */}
-          <div className="flex flex-col sm:flex-row gap-8 sm:gap-4 justify-center items-start mb-4">
+          {/* Second tier - vertical on mobile, horizontal on desktop */}
+          <div className="flex flex-col sm:flex-row gap-6 sm:gap-4 justify-center items-start mb-4 sm:mb-8">
             {secondTier.map((member) => (
-              <div key={member.position} className="flex-1">
-                <PersonCard 
+              <div key={member.position} className="w-full sm:flex-1">
+                <PersonCard
                   position={member.position}
                   names={member.names}
                   initials={member.initials}
@@ -150,22 +150,22 @@ const OrganizationStructure = () => {
           </div>
 
           {/* Connecting line from second tier to third tier */}
-          <div className="flex justify-center mb-4">
-            <div className="w-px h-10 bg-[#2D6A4F]/30" />
+          <div className="flex justify-center mb-4 sm:mb-6">
+            <div className="w-px h-8 sm:h-10 bg-[#2D6A4F]/30" />
           </div>
 
-          {/* Horizontal line for third tier */}
-          <div className="relative mb-4">
+          {/* Horizontal line for third tier - desktop only */}
+          <div className="relative mb-4 sm:mb-8">
             <div className="hidden sm:block">
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-[#2D6A4F]/30" />
             </div>
           </div>
 
-          {/* Third tier */}
-          <div className="flex flex-col sm:flex-row gap-8 sm:gap-4 justify-center items-start">
+          {/* Third tier - vertical on mobile, horizontal on desktop */}
+          <div className="flex flex-col sm:flex-row gap-6 sm:gap-4 justify-center items-start">
             {thirdTier.map((member) => (
-              <div key={member.position} className="flex-1">
-                <PersonCard 
+              <div key={member.position} className="w-full sm:flex-1">
+                <PersonCard
                   position={member.position}
                   names={member.names}
                   initials={member.initials}

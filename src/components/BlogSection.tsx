@@ -58,22 +58,22 @@ const BlogSection = () => {
                   <img
                     src="/images/pemilahan.png"
                     alt="Proses pemilahan sampah"
-                    className="w-full h-64 md:h-80 object-cover photo-graded"
+                    className="w-full h-56 sm:h-64 md:h-80 object-cover photo-graded"
                     loading="lazy"
                   />
                 </div>
-                {/* Smaller overlapping photo */}
-                <div className="absolute -bottom-8 -right-4 md:-right-8 w-2/3 rounded-md overflow-hidden border border-[#E8DFD0] shadow-xl">
+                {/* Smaller overlapping photo - adjust position for mobile */}
+                <div className="absolute -bottom-6 -right-2 sm:-bottom-8 sm:-right-4 md:-right-8 w-2/3 rounded-md overflow-hidden border border-[#E8DFD0] shadow-xl">
                   <img
                     src="/images/penimbangan.png"
                     alt="Penimbangan sampah"
-                    className="w-full h-40 md:h-48 object-cover photo-graded"
+                    className="w-full h-32 sm:h-40 md:h-48 object-cover photo-graded"
                     loading="lazy"
                   />
                 </div>
               </div>
-              {/* Spacer for overlap */}
-              <div className="h-12" />
+              {/* Spacer for overlap - smaller on mobile */}
+              <div className="h-8 sm:h-12" />
             </div>
           </div>
         </div>

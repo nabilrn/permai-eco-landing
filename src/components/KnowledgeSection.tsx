@@ -79,10 +79,10 @@ const KnowledgeSection = () => {
           {categories.map((cat, index) => (
             <div
               key={index}
-              className="stagger-child p-6 md:p-8 rounded-lg border border-white/15 bg-white/[0.07] backdrop-blur-md transition-all duration-300 hover:bg-white/[0.12] hover:border-white/25"
+              className="stagger-child p-5 sm:p-6 md:p-8 rounded-lg border border-white/15 bg-white/[0.07] backdrop-blur-md transition-all duration-300 hover:bg-white/[0.12] hover:border-white/25"
             >
-              <div className="text-white/80 mb-4">{cat.icon}</div>
-              <h3 className="font-serif text-xl text-white mb-2">
+              <div className="text-white/80 mb-3 sm:mb-4">{cat.icon}</div>
+              <h3 className="font-serif text-lg sm:text-xl text-white mb-2">
                 {cat.title}
               </h3>
               <p className="text-white/60 text-sm leading-relaxed">
