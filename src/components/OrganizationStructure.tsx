@@ -8,17 +8,17 @@ const OrganizationStructure = () => {
   const secondTier = [
     {
       position: "Wakil Direktur",
-      name: "Juraimah",
+      names: ["Juraimah"],
       initials: "J",
     },
     {
       position: "Sekretaris",
-      name: "Sauqiyati Azkia Darman, Salaabilla Fransisca Oktomadina",
+      names: ["Sauqiyati Azkia Darman", "Salaabilla Fransisca Oktomadina"],
       initials: "SA",
     },
     {
       position: "Bendahara",
-      name: "Eva Martha",
+      names: ["Eva Martha"],
       initials: "EM",
     },
   ];
@@ -26,28 +26,28 @@ const OrganizationStructure = () => {
   const thirdTier = [
     {
       position: "Bidang Penerimaan, Pemilahan dan Pencatatan",
-      name: "Ismawati Ismail, Guslaini",
+      names: ["Ismawati Ismail", "Guslaini"],
       initials: "PP",
     },
     {
       position: "Bidang Pengembangan dan Kerajinan Usaha",
-      name: "Roslina Tobing, Yuniasri, Ripos Maradona",
+      names: ["Roslina Tobing", "Yuniasri", "Ripos Maradona"],
       initials: "PK",
     },
   ];
 
   const PersonCard = ({
     position,
-    name,
+    names,
     initials,
     featured = false,
   }: {
     position: string;
-    name: string;
+    names: string[];
     initials: string;
     featured?: boolean;
   }) => (
-    <div className={`text-center ${featured ? "" : "w-full sm:w-auto sm:flex-1"}`}>
+    <div className={`text-center ${featured ? "" : "w-full"}`}>
       <div
         className={`inline-flex items-center justify-center rounded-full bg-[#2D6A4F]/10 text-[#2D6A4F] font-bold mb-3 ${
           featured ? "w-16 h-16 text-xl" : "w-12 h-12 text-sm"
@@ -62,15 +62,32 @@ const OrganizationStructure = () => {
       >
         {position}
       </p>
-      <p
-        className={`text-[#1B1B1B] ${
-          featured
-            ? "text-xl font-serif italic"
-            : "text-sm font-semibold leading-snug"
-        }`}
-      >
-        {name}
-      </p>
+      {names.length === 1 ? (
+        <p
+          className={`text-[#1B1B1B] ${
+            featured
+              ? "text-xl font-serif italic"
+              : "text-sm font-semibold leading-snug"
+          }`}
+        >
+          {names[0]}
+        </p>
+      ) : (
+        <ul className="space-y-1">
+          {names.map((name, index) => (
+            <li
+              key={index}
+              className={`text-[#1B1B1B] ${
+                featured
+                  ? "text-xl font-serif italic"
+                  : "text-sm font-semibold leading-snug"
+              }`}
+            >
+              {name}
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 
@@ -98,36 +115,61 @@ const OrganizationStructure = () => {
         {/* Org chart */}
         <div className="animate-on-scroll">
           {/* Director - featured at top */}
-          <div className="mb-8">
-            <PersonCard {...director} featured />
+          <div className="mb-4">
+            <PersonCard 
+              position={director.position}
+              names={[director.name]}
+              initials={director.initials}
+              featured 
+            />
           </div>
 
-          {/* Connecting line */}
-          <div className="w-px h-10 bg-[#E5E7EB] mx-auto my-2" />
+          {/* Connecting line from director to second tier */}
+          <div className="flex justify-center mb-4">
+            <div className="w-px h-10 bg-[#2D6A4F]/30" />
+          </div>
+
+          {/* Horizontal line for second tier */}
+          <div className="relative mb-4">
+            <div className="hidden sm:block">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-[#2D6A4F]/30" />
+            </div>
+          </div>
 
           {/* Second tier */}
-          <div className="flex flex-col gap-6 sm:flex-row sm:gap-6 justify-center items-center mb-8">
-            {secondTier.map((member, index) => (
-              <div key={member.position} className="w-full sm:w-auto">
-                <PersonCard {...member} />
-                {index < secondTier.length - 1 && (
-                  <div className="hidden sm:block w-px h-8 bg-[#E5E7EB] mx-auto my-4" />
-                )}
+          <div className="flex flex-col sm:flex-row gap-8 sm:gap-4 justify-center items-start mb-4">
+            {secondTier.map((member) => (
+              <div key={member.position} className="flex-1">
+                <PersonCard 
+                  position={member.position}
+                  names={member.names}
+                  initials={member.initials}
+                />
               </div>
             ))}
           </div>
 
-          {/* Connecting line */}
-          <div className="w-px h-10 bg-[#E5E7EB] mx-auto my-2" />
+          {/* Connecting line from second tier to third tier */}
+          <div className="flex justify-center mb-4">
+            <div className="w-px h-10 bg-[#2D6A4F]/30" />
+          </div>
+
+          {/* Horizontal line for third tier */}
+          <div className="relative mb-4">
+            <div className="hidden sm:block">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-[#2D6A4F]/30" />
+            </div>
+          </div>
 
           {/* Third tier */}
-          <div className="flex flex-col gap-6 sm:flex-row sm:gap-6 justify-center items-center">
-            {thirdTier.map((member, index) => (
-              <div key={member.position} className="w-full sm:w-auto">
-                <PersonCard {...member} />
-                {index < thirdTier.length - 1 && (
-                  <div className="hidden sm:block w-px h-8 bg-[#E5E7EB] mx-auto my-4" />
-                )}
+          <div className="flex flex-col sm:flex-row gap-8 sm:gap-4 justify-center items-start">
+            {thirdTier.map((member) => (
+              <div key={member.position} className="flex-1">
+                <PersonCard 
+                  position={member.position}
+                  names={member.names}
+                  initials={member.initials}
+                />
               </div>
             ))}
           </div>

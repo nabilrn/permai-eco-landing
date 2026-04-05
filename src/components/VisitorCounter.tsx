@@ -2,12 +2,12 @@ import { useState, useEffect, useCallback, useRef } from "react";
 
 const VISITOR_STORAGE_KEY = "visitorData";
 const VISITOR_TOKEN_KEY = "visitorToken";
+const GLOBAL_COUNT_KEY = "globalVisitorCount";
 
-// Using CountAPI - a free counter service
-// Alternative: Set up Firebase Realtime DB or your own backend
+// Using CountAPI as primary, with localStorage fallback
 const COUNTER_API_BASE = "https://api.countapi.xyz";
 const COUNTER_NAMESPACE = "permai-eco-landing";
-const COUNTER_KEY = "total-visitors";
+const COUNTER_KEY_NAME = "total-visitors";
 
 const VisitorCounter = () => {
   const [counters, setCounters] = useState({
@@ -32,7 +32,7 @@ const VisitorCounter = () => {
     (target: number, key: keyof typeof animatedCounters, delay: number = 0) => {
       setTimeout(() => {
         let current = 0;
-        const increment = target / 60;
+        const increment = Math.max(1, target / 60);
         const timer = setInterval(() => {
           current += increment;
           if (current >= target) {
@@ -61,37 +61,73 @@ const VisitorCounter = () => {
       return generatedToken;
     };
 
+    const incrementLocalCount = (currentData: any) => {
+      const now = new Date();
+      const today = now.toDateString();
+      const currentMonth = now.getMonth();
+      const currentYear = now.getFullYear();
+
+      const todayCount = currentData.lastVisitDate === today ? (currentData.todayCount || 0) + 1 : 1;
+      const monthCount =
+        currentData.lastVisitMonth === currentMonth &&
+        currentData.lastVisitYear === currentYear
+          ? (currentData.monthCount || 0) + 1
+          : 1;
+      const yearCount =
+        currentData.lastVisitYear === currentYear
+          ? (currentData.yearCount || 0) + 1
+          : 1;
+
+      // Increment global count stored in localStorage
+      const globalCount = (currentData.globalCount || 0) + 1;
+
+      const newData = {
+        lastVisitDate: today,
+        lastVisitMonth: currentMonth,
+        lastVisitYear: currentYear,
+        todayCount,
+        monthCount,
+        yearCount,
+        total: globalCount,
+        globalCount,
+        visitorToken: currentData.visitorToken,
+      };
+
+      localStorage.setItem(VISITOR_STORAGE_KEY, JSON.stringify(newData));
+      return newData;
+    };
+
     const fetchVisitorCount = async () => {
       try {
-        // First, ensure the counter exists (create if not exists)
-        const createUrl = `${COUNTER_API_BASE}/create?namespace=${COUNTER_NAMESPACE}&key=${COUNTER_KEY}`;
-        await fetch(createUrl, { method: "GET" });
-
-        // Try to increment and get the global counter
-        const incrementUrl = `${COUNTER_API_BASE}/hit/${COUNTER_NAMESPACE}/${COUNTER_KEY}`;
-        const response = await fetch(incrementUrl);
+        // Try to use CountAPI first
+        const incrementUrl = `${COUNTER_API_BASE}/hit/${COUNTER_NAMESPACE}/${COUNTER_KEY_NAME}`;
+        const response = await fetch(incrementUrl, { 
+          method: "GET",
+          signal: AbortSignal.timeout(5000) // 5 second timeout
+        });
 
         if (!response.ok) {
-          throw new Error("Failed to fetch visitor count");
+          throw new Error("CountAPI failed");
         }
 
         const data = await response.json();
-        return data.value;
+        return { total: data.value, useApi: true };
       } catch (error) {
-        console.error("Error fetching visitor counter:", error);
-        // Fallback: return a stored value or 0
+        console.warn("CountAPI unavailable, using localStorage:", error);
+        
+        // Fallback to localStorage-based counting
         const storedData = localStorage.getItem(VISITOR_STORAGE_KEY);
-        if (storedData) {
-          const parsed = JSON.parse(storedData);
-          return parsed.totalCount || 0;
-        }
-        return 0;
+        const currentData = storedData ? JSON.parse(storedData) : {};
+        const updatedData = incrementLocalCount(currentData);
+        
+        return { total: updatedData.total, useApi: false };
       }
     };
 
     const visitorToken = getOrCreateVisitorToken();
     const lastVisit = localStorage.getItem(VISITOR_STORAGE_KEY);
     const today = new Date().toDateString();
+    const now = new Date();
 
     // Check if we already counted this visitor today
     let shouldIncrement = true;
@@ -102,44 +138,55 @@ const VisitorCounter = () => {
       }
     }
 
-    // Only call API once per visitor per day
     if (shouldIncrement) {
-      fetchVisitorCount().then((totalCount) => {
-        // Update localStorage with visit info
-        const storedData = localStorage.getItem(VISITOR_STORAGE_KEY);
-        const visitData = storedData ? JSON.parse(storedData) : {};
+      fetchVisitorCount().then(({ total, useApi }) => {
+        if (useApi && lastVisit) {
+          // Update local counts but use API total
+          const visitData = JSON.parse(lastVisit);
+          const currentMonth = now.getMonth();
+          const currentYear = now.getFullYear();
 
-        const todayCount = visitData.lastVisitDate === today ? (visitData.todayCount || 0) + 1 : 1;
-        const monthCount =
-          visitData.lastVisitMonth === new Date().getMonth() &&
-          visitData.lastVisitYear === new Date().getFullYear()
-            ? (visitData.monthCount || 0) + 1
-            : 1;
-        const yearCount =
-          visitData.lastVisitYear === new Date().getFullYear()
-            ? (visitData.yearCount || 0) + 1
-            : 1;
+          const todayCount = visitData.lastVisitDate === today ? (visitData.todayCount || 0) + 1 : 1;
+          const monthCount =
+            visitData.lastVisitMonth === currentMonth &&
+            visitData.lastVisitYear === currentYear
+              ? (visitData.monthCount || 0) + 1
+              : 1;
+          const yearCount =
+            visitData.lastVisitYear === currentYear
+              ? (visitData.yearCount || 0) + 1
+              : 1;
 
-        localStorage.setItem(
-          VISITOR_STORAGE_KEY,
-          JSON.stringify({
-            lastVisitDate: today,
-            lastVisitMonth: new Date().getMonth(),
-            lastVisitYear: new Date().getFullYear(),
-            todayCount,
-            monthCount,
-            yearCount,
-            totalCount,
-            visitorToken,
-          })
-        );
+          localStorage.setItem(
+            VISITOR_STORAGE_KEY,
+            JSON.stringify({
+              ...visitData,
+              lastVisitDate: today,
+              lastVisitMonth: currentMonth,
+              lastVisitYear: currentYear,
+              todayCount,
+              monthCount,
+              yearCount,
+              total,
+              visitorToken,
+            })
+          );
 
-        setCounters({
-          today: todayCount,
-          thisMonth: monthCount,
-          thisYear: yearCount,
-          total: totalCount,
-        });
+          setCounters({
+            today: todayCount,
+            thisMonth: monthCount,
+            thisYear: yearCount,
+            total,
+          });
+        } else if (useApi) {
+          // First visit ever
+          setCounters({
+            today: 1,
+            thisMonth: 1,
+            thisYear: 1,
+            total,
+          });
+        }
         setIsLoading(false);
       });
     } else {
@@ -149,7 +196,7 @@ const VisitorCounter = () => {
         today: visitData.todayCount || 1,
         thisMonth: visitData.monthCount || 1,
         thisYear: visitData.yearCount || 1,
-        total: visitData.totalCount || 0,
+        total: visitData.total || 0,
       });
       setIsLoading(false);
     }
